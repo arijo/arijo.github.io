@@ -13,17 +13,17 @@
 <meta property="og:site_name" content="Alexandre Gomes">
 <meta property="og:description" content="How to build a large, single-page javascript application with JavascriptMVC">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_mock.png">
-<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_components.png">
-<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_files.png">
-<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_scaffold.png">
-<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_searchbar_history.png">
-<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_searchbar_search_results.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_mock.png">
+<meta property="og:image" content="http://firmamento.org/images/jmvc_srchr_components.png">
+<meta property="og:image" content="http://firmamento.org/images/jmvc_srchr_files.png">
+<meta property="og:image" content="http://firmamento.org/images/jmvc_srchr_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/images/jmvc_srchr_searchbar_history.png">
+<meta property="og:image" content="http://firmamento.org/images/jmvc_srchr_searchbar_search_results.png">
 <meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to build a large, single-page javascript application with JavascriptMVC">
 <meta name="twitter:description" content="How to build a large, single-page javascript application with JavascriptMVC">
-<meta name="twitter:image" content="http://firmamento.org/static/images/srchr_mock.png">
+<meta name="twitter:image" content="http://firmamento.org/images/srchr_mock.png">
     
     
         
@@ -172,13 +172,13 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
-		<link rel="stylesheet" media="all" href="/static/css/style.css">
-		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+		<link rel="stylesheet" media="all" href="/css/style.css">
+		<link rel="stylesheet" media="all" href="/css/pygment.css">
 	
-		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
 
-		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/overrides.css" type="text/css" media="screen" charset="utf-8">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -205,18 +205,18 @@
 
 		<div class="post-content">
 			<p>In <a href="http://firmamento.org/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">my previous article</a> I&#8217;ve described in detail how to implement Rebecca Murphey&#8217;s Srchr application using the ExtJs framework. In this article I&#8217;ll use the <a href="http://javascriptmvc.com/" target="_blank" rel="noopener">JavascriptMVC framework</a> for the same purpose. We&#8217;ll follow the same code flow as in the previous article and start by breaking down the application into smaller javascriptmvc components and then work on each of the main component interactions, one at a time.</p>
-<a href="/static/images/srchr_mock.png">
-	<img height="480" src="/static/images/srchr_mock.png" title="Searchr application mockup" width="640">
+<a href="/images/srchr_mock.png">
+	<img height="480" src="/images/srchr_mock.png" title="Searchr application mockup" width="640">
 </a>
 <h3 id="designing_the_javascriptmvc_application">Designing the JavascriptMVC application</h3>
 
 <p>Let&#8217;s start by breaking down the srchr application into a small set of components we will use to bootstrap our development effort:</p>
-<a href="/static/images/jmvc_srchr_components.png">
-	<img height="480" src="/static/images/jmvc_srchr_components.png" title="Searchr application components" width="640">
+<a href="/images/jmvc_srchr_components.png">
+	<img height="480" src="/images/jmvc_srchr_components.png" title="Searchr application components" width="640">
 </a>
 <p>The folder structure for our application:</p>
-<a href="/static/images/jmvc_srchr_files.png">
-	<img src="/static/images/jmvc_srchr_files.png" title="Searchr application file organization">
+<a href="/images/jmvc_srchr_files.png">
+	<img src="/images/jmvc_srchr_files.png" title="Searchr application file organization">
 </a>
 <p>To reproduce the steps described in this tutorial you&#8217;ll have to <a href="https://github.com/downloads/bitovi/javascriptmvc/javascriptmvc-3.2.4.zip" target="_blank" rel="noopener">download the JavascriptMVC framework</a> and unzip the archive into the example&#8217;s root folder. These dependencies are required in order to run the code presented in this article.</p>
 
@@ -326,8 +326,8 @@
 <span class="err">}</span>
 </code></pre></div>
 <p>And here&#8217;s the end result of the above code snippets:</p>
-<a href="/static/images/jmvc_srchr_scaffold.png">
-	<img height="480" src="/static/images/jmvc_srchr_scaffold.png" style="border: 1px solid #3ba3d0;" title="Searchr application scaffold" width="640">
+<a href="/images/jmvc_srchr_scaffold.png">
+	<img height="480" src="/images/jmvc_srchr_scaffold.png" style="border: 1px solid #3ba3d0;" title="Searchr application scaffold" width="640">
 </a>
 <h3 id="srchrsearchbarsrchrhistory_component_interaction">Srchr.SearchBar/Srchr.History component interaction</h3>
 
@@ -573,8 +573,8 @@
 		<span class="c1">// ...</span>
 </code></pre></div>
 <p>The working app so far:</p>
-<a href="/static/images/jmvc_srchr_searchbar_history.png">
-	<img height="480" src="/static/images/jmvc_srchr_searchbar_history.png" style="border: 1px solid #3ba3d0;" title="SearchBar/History interaction" width="640">
+<a href="/images/jmvc_srchr_searchbar_history.png">
+	<img height="480" src="/images/jmvc_srchr_searchbar_history.png" style="border: 1px solid #3ba3d0;" title="SearchBar/History interaction" width="640">
 </a>
 <h3 id="srchrsearchbarsrchrsearchresults_component_interaction">Srchr.SearchBar/Srchr.SearchResults component interaction</h3>
 
@@ -938,8 +938,8 @@
 	<span class="err">}</span>
 </code></pre></div>
 <p>And this is how the resulting code looks like when we run it:</p>
-<a href="/static/images/jmvc_srchr_searchbar_search_results.png">
-	<img height="480" src="/static/images/jmvc_srchr_searchbar_search_results.png" style="border: 1px solid #3ba3d0;" title="SearchBar/SearchResults interaction" width="640">
+<a href="/images/jmvc_srchr_searchbar_search_results.png">
+	<img height="480" src="/images/jmvc_srchr_searchbar_search_results.png" style="border: 1px solid #3ba3d0;" title="SearchBar/SearchResults interaction" width="640">
 </a>
 <h3 id="historysearchresults_ineraction">History/SearchResults ineraction</h3>
 
@@ -1054,15 +1054,15 @@
 
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/static/js/script.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
 
-	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		SyntaxHighlighter.all();
 	</script>
