@@ -13,20 +13,20 @@
 <meta property="og:site_name" content="Alexandre Gomes">
 <meta property="og:description" content="How to build a large, single-page javascript application with Backbone.js">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_mock.png">
-<meta property="og:image" content="http://firmamento.org/static/images/backbone_srchr_components.png">
-<meta property="og:image" content="http://firmamento.org/static/images/backbone_srchr_files.png">
-<meta property="og:image" content="http://firmamento.org/static/images/backbone_srchr_scaffold.png">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_search_bar_history_interaction_diagram.png">
-<meta property="og:image" content="http://firmamento.org/static/images/backbone_srchr_search_bar_history.png">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_search_bar_search_results_interaction_diagram.png">
-<meta property="og:image" content="http://firmamento.org/static/images/backbone_srchr_search_bar_search_results.png">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_history_search_results_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_mock.png">
+<meta property="og:image" content="http://firmamento.org/images/backbone_srchr_components.png">
+<meta property="og:image" content="http://firmamento.org/images/backbone_srchr_files.png">
+<meta property="og:image" content="http://firmamento.org/images/backbone_srchr_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_search_bar_history_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/images/backbone_srchr_search_bar_history.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_search_bar_search_results_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/images/backbone_srchr_search_bar_search_results.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_history_search_results_interaction_diagram.png">
 <meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to build a large, single-page javascript application with Backbone.js">
 <meta name="twitter:description" content="How to build a large, single-page javascript application with Backbone.js">
-<meta name="twitter:image" content="http://firmamento.org/static/images/srchr_mock.png">
+<meta name="twitter:image" content="http://firmamento.org/images/srchr_mock.png">
     
     
         
@@ -159,7 +159,7 @@
 
 		<meta property="og:title" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with Backbone.js - Alex Gomes">
 		<meta property="og:type" content="company">
-		<meta property="og:url" content="http://firmamento.org/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">
+		<meta property="og:url" content="http://firmamento.org/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">
 		<meta property="og:image" content="http://firmamento.org/img.png">
 		<meta property="og:site_name" content="Alex Gomes">
 
@@ -175,13 +175,13 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
-		<link rel="stylesheet" media="all" href="/static/css/style.css">
-		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+		<link rel="stylesheet" media="all" href="/css/style.css">
+		<link rel="stylesheet" media="all" href="/css/pygment.css">
 	
-		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
 
-		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/overrides.css" type="text/css" media="screen" charset="utf-8">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -206,23 +206,23 @@
 	<article class="post">
 
 		<div class="post-content">
-			<p>In <a href="http://firmamento.org/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">my last article</a> on the &#8220;How to build a large, single-page javascript application&#8221; series we used the <a href="http://javascriptmvc.com" target="_blank" rel="noopener">JavascriptMVC framework</a> to build Rebecca Murphey&#8217;s javascript&#8217;s community challenge application - <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>. In this article we&#8217;ll follow the same coding pattern to show how to do the same using <a href="http://backbonejs.org" target="_blank" rel="noopener">Backbone.js</a> as the base javascript MVC framework instead.</p>
+			<p>In <a href="http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">my last article</a> on the &#8220;How to build a large, single-page javascript application&#8221; series we used the <a href="http://javascriptmvc.com" target="_blank" rel="noopener">JavascriptMVC framework</a> to build Rebecca Murphey&#8217;s javascript&#8217;s community challenge application - <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>. In this article we&#8217;ll follow the same coding pattern to show how to do the same using <a href="http://backbonejs.org" target="_blank" rel="noopener">Backbone.js</a> as the base javascript MVC framework instead.</p>
 
 <p>You can download all the project&#8217;s code from <a href="https://github.com/arijo/srchr" target="_blank" rel="noopener">this github repo</a> and compare the different srchr implementations by jumping between &#8220;extjs&#8221;, &#8220;javascriptmvc&#8221; and &#8220;backbone&#8221; branches.</p>
 
 <p>Following the same workflow as in the two previous articles let&#8217;s start by breaking down the application into a set of smaller backbone.js components and then work on each of the component event-driven interactions at a time.</p>
-<a href="/static/images/srchr_mock.png">
-	<img height="480" src="/static/images/srchr_mock.png" title="Searchr application mockup" width="640">
+<a href="/images/srchr_mock.png">
+	<img height="480" src="/images/srchr_mock.png" title="Searchr application mockup" width="640">
 </a>
 <h3 id="designing_the_backonejs_application">Designing the Backone.js application</h3>
 
 <p>Let&#8217;s start by breaking down the application into a set of maneageable backbone.js views:</p>
-<a href="/static/images/backbone_srchr_components.png">
-	<img height="480" src="/static/images/backbone_srchr_components.png" title="Searchr application components" width="640">
+<a href="/images/backbone_srchr_components.png">
+	<img height="480" src="/images/backbone_srchr_components.png" title="Searchr application components" width="640">
 </a>
 <p>And this is the folder organization for our backbone application:</p>
-<a href="/static/images/backbone_srchr_files.png">
-	<img src="/static/images/backbone_srchr_files.png" title="Searchr application file organization">
+<a href="/images/backbone_srchr_files.png">
+	<img src="/images/backbone_srchr_files.png" title="Searchr application file organization">
 </a>
 <p>Since we&#8217;re going to use requirejs as the dependency management tool for this project I&#8217;ve decided to use the AMD enabled version of both the <a href="https://github.com/amdjs/underscore" target="_blank" rel="noopener">underscore</a> and <a href="https://github.com/amdjs/backbone" target="_blank" rel="noopener">backbone</a> libraries.</p>
 
@@ -422,8 +422,8 @@
 <span class="err">}</span>
 </code></pre></div>
 <p>You can see how the scaffolded application looks in the following image:</p>
-<a href="/static/images/backbone_srchr_scaffold.png">
-	<img height="480" src="/static/images/backbone_srchr_scaffold.png" style="border: 1px solid #3ba3d0;" title="Searchr application scaffold" width="640">
+<a href="/images/backbone_srchr_scaffold.png">
+	<img height="480" src="/images/backbone_srchr_scaffold.png" style="border: 1px solid #3ba3d0;" title="Searchr application scaffold" width="640">
 </a>
 <h3 id="eventdriven_interaction_between_the_searchbar_and_history_views">Event-driven interaction between the SearchBar and History views</h3>
 
@@ -432,8 +432,8 @@
 <p>Every time the user hits the search button, SearchBar will be responseable for throwing a &#8220;search&#8221; event that will be caught by the main Srchr view that then commands History to add a new search entry to it&#8217;s search command list (stored in the browser&#8217;s localStorage).</p>
 
 <p>The following image shows in detail the sequence of interactions described above:</p>
-<a href="/static/images/srchr_search_bar_history_interaction_diagram.png">
-	<img src="/static/images/srchr_search_bar_history_interaction_diagram.png" title="SearchBar/History interaction diagram">
+<a href="/images/srchr_search_bar_history_interaction_diagram.png">
+	<img src="/images/srchr_search_bar_history_interaction_diagram.png" title="SearchBar/History interaction diagram">
 </a>
 <p>The relevant changes to the codebase follow:</p>
 <strong>srchr/search_bar/search_bar.js</strong><div class="highlight"><pre><code class="javascript"><span class="c1">// ...</span>
@@ -722,8 +722,8 @@
 <span class="c1">// ...</span>
 </code></pre></div>
 <p>You can see how the application looks so far in the image bellow:</p>
-<a href="/static/images/backbone_srchr_search_bar_history.png">
-	<img height="480" src="/static/images/backbone_srchr_search_bar_history.png" style="border: 1px solid #3ba3d0;" title="SearchBar/History interaction" width="640">
+<a href="/images/backbone_srchr_search_bar_history.png">
+	<img height="480" src="/images/backbone_srchr_search_bar_history.png" style="border: 1px solid #3ba3d0;" title="SearchBar/History interaction" width="640">
 </a>
 <h3 id="eventdriven_interaction_between_the_searchbar_and_searchresults_views">Event-driven interaction between the SearchBar and SearchResults views</h3>
 
@@ -732,8 +732,8 @@
 <p>Upon the user hiting the search button, the SearchBar view throws a &#8220;search&#8221; event, the main Srchr view listens to it, activates the correct tab and tells the relevant SearchResults view to execute the search for the query provided by the user.</p>
 
 <p>A simplified image of the event-driven interaction is provided bellow:</p>
-<a href="/static/images/srchr_search_bar_search_results_interaction_diagram.png">
-	<img src="/static/images/srchr_search_bar_search_results_interaction_diagram.png" title="SearchBar/SearchResults interaction  diagram">
+<a href="/images/srchr_search_bar_search_results_interaction_diagram.png">
+	<img src="/images/srchr_search_bar_search_results_interaction_diagram.png" title="SearchBar/SearchResults interaction  diagram">
 </a>
 <p>The changes to the code follow:</p>
 <strong>srchr/srchr.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span>
@@ -1073,16 +1073,16 @@
 <span class="c1">// ...</span>
 </code></pre></div>
 <p>And this is how the application looks after these changes:</p>
-<a href="/static/images/backbone_srchr_search_bar_search_results.png">
-	<img height="480" src="/static/images/backbone_srchr_search_bar_search_results.png" style="border: 1px solid #3ba3d0;" title="SearchBar/SearchResults interaction" width="640">
+<a href="/images/backbone_srchr_search_bar_search_results.png">
+	<img height="480" src="/images/backbone_srchr_search_bar_search_results.png" style="border: 1px solid #3ba3d0;" title="SearchBar/SearchResults interaction" width="640">
 </a>
 <h3 id="eventdriven_interaction_between_history_and_searchresults_views">Event-driven interaction between History and SearchResults views</h3>
 
 <p>We now move on to implement the final event-driven interaction between the History and SearchResults views. In this use case the user clicks the search button, the SearchBar view throws a &#8220;search&#8221; event, the Srchr view is listening for it, activates the correct tab panel and calls the search method on the relevant SearchResults view.</p>
 
 <p>A diagram for this sequence of interactions is shown bellow:</p>
-<a href="/static/images/srchr_history_search_results_interaction_diagram.png">
-	<img src="/static/images/srchr_history_search_results_interaction_diagram.png" title="History/SearchResults interaction  diagram">
+<a href="/images/srchr_history_search_results_interaction_diagram.png">
+	<img src="/images/srchr_history_search_results_interaction_diagram.png" title="History/SearchResults interaction  diagram">
 </a>
 <p>Here are the changes to the code:</p>
 <strong>srchr/history/history.js</strong><div class="highlight"><pre><code class="javascript"><span class="c1">// ...</span>
@@ -1119,11 +1119,11 @@
 </code></pre></div>
 <h3 id="final_thoughts">Final thoughts</h3>
 
-<p>In this article we&#8217;ve implemented Rebecca Murphey&#8217;s <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a> application using <a href="http://backbonejs.org" target="_blank" rel="noopener">Backbone.js</a> javascript MVC framework following the same development flow as we did for the <a href="http://firmamento.org/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">ExtJs</a> and <a href="http://firmamento.org/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">JavascriptMVC</a> frameworks.</p>
+<p>In this article we&#8217;ve implemented Rebecca Murphey&#8217;s <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a> application using <a href="http://backbonejs.org" target="_blank" rel="noopener">Backbone.js</a> javascript MVC framework following the same development flow as we did for the <a href="http://firmamento.org/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">ExtJs</a> and <a href="http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">JavascriptMVC</a> frameworks.</p>
 
 <p>A github repository with a branch for each of the different implementations can be cloned from <a href="https://github.com/arijo/srchr" target="_blank" rel="noopener">this github page</a> so you can easely compare the different versions.</p>
 
-<p>In the next article we&#8217;ll tackle <a href="/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">building the srchr application using AngularJS</a>.</p>
+<p>In the next article we&#8217;ll tackle <a href="/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">building the srchr application using AngularJS</a>.</p>
 
 <p>I hope this article was useful for you and thank you for reading my blog post.</p>
 		</div><!-- .post-content -->
@@ -1133,10 +1133,10 @@
 	<!--nav class="pagenation">
 		<ul>
 			
-				<li class="before left"><a rel="prev" href="/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/" title="View How to build a large, single-page javascript application with JavascriptMVC">&laquo; Previous</a></li>
+				<li class="before left"><a rel="prev" href="/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/" title="View How to build a large, single-page javascript application with JavascriptMVC">&laquo; Previous</a></li>
 			
 			
-				<li class="next right"><a rel="next" href="/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/" title="View How to build a large, single-page javascript application with AngularJs">Next &raquo;</a></li>
+				<li class="next right"><a rel="next" href="/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/" title="View How to build a large, single-page javascript application with AngularJs">Next &raquo;</a></li>
 			
 		</ul>
 	</nav-->
@@ -1145,11 +1145,11 @@
 	  <h2>Related Posts</h2>
 	  <ul class="posts">
 	    
-	      <li><span>10 Oct 2013</span> &raquo; <a href="/blog/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
+	      <li><span>10 Oct 2013</span> &raquo; <a href="/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
 	    
-	      <li><span>21 Apr 2013</span> &raquo; <a href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
+	      <li><span>21 Apr 2013</span> &raquo; <a href="/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
 	    
-	      <li><span>20 Jan 2013</span> &raquo; <a href="/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">How to build a large, single-page javascript application with AngularJs</a></li>
+	      <li><span>20 Jan 2013</span> &raquo; <a href="/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">How to build a large, single-page javascript application with AngularJs</a></li>
 	    
 	  </ul>
 	</div-->
@@ -1196,15 +1196,15 @@
 
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/static/js/script.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
 
-	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		SyntaxHighlighter.all();
 	</script>

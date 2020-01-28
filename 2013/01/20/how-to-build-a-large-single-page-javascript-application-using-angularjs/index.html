@@ -13,17 +13,17 @@
 <meta property="og:site_name" content="Alexandre Gomes">
 <meta property="og:description" content="How to build a large, single-page javascript application with AngularJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			I">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://firmamento.org/static/images/angular_srchr_scaffold.png">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_angular_search_bar_history_interaction_diagram.png">
-<meta property="og:image" content="http://firmamento.org/static/images/angular_srchr_search_bar_history.png">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_angular_search_bar_search_results_interaction_diagram.png">
-<meta property="og:image" content="http://firmamento.org/static/images/angular_srchr_search_bar_search_results.png">
-<meta property="og:image" content="http://firmamento.org/static/images/srchr_angular_history_search_results_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/images/angular_srchr_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_angular_search_bar_history_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/images/angular_srchr_search_bar_history.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_angular_search_bar_search_results_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/images/angular_srchr_search_bar_search_results.png">
+<meta property="og:image" content="http://firmamento.org/images/srchr_angular_history_search_results_interaction_diagram.png">
 <meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to build a large, single-page javascript application with AngularJs">
 <meta name="twitter:description" content="How to build a large, single-page javascript application with AngularJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			I">
-<meta name="twitter:image" content="http://firmamento.org/static/images/angular_srchr_scaffold.png">
+<meta name="twitter:image" content="http://firmamento.org/images/angular_srchr_scaffold.png">
     
     
         
@@ -156,7 +156,7 @@
 
 		<meta property="og:title" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with AngularJs - Alex Gomes">
 		<meta property="og:type" content="company">
-		<meta property="og:url" content="http://firmamento.org/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">
+		<meta property="og:url" content="http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">
 		<meta property="og:image" content="http://firmamento.org/img.png">
 		<meta property="og:site_name" content="Alex Gomes">
 
@@ -172,13 +172,13 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
-		<link rel="stylesheet" media="all" href="/static/css/style.css">
-		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+		<link rel="stylesheet" media="all" href="/css/style.css">
+		<link rel="stylesheet" media="all" href="/css/pygment.css">
 	
-		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
 
-		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/css/overrides.css" type="text/css" media="screen" charset="utf-8">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -203,11 +203,11 @@
 	<article class="post">
 
 		<div class="post-content">
-			<p>In this article, we follow-up on my <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">last post</a> and use <a href="http://angularjs.org" target="_blank" rel="noopener">angularjs</a> to implement <a href="http://rmurphey.com" target="_blank" rel="noopener">Rebecca Murphey&#8217;s</a> javascript&#8217;s community crowdsourcing exercise - <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>. We will try to follow the same coding workflow as in previous articles where possible keeping in mind that each framework has its own way of doing things that needs to be taken into account in order to follow the framework&#8217;s best practices.</p>
+			<p>In this article, we follow-up on my <a href="/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">last post</a> and use <a href="http://angularjs.org" target="_blank" rel="noopener">angularjs</a> to implement <a href="http://rmurphey.com" target="_blank" rel="noopener">Rebecca Murphey&#8217;s</a> javascript&#8217;s community crowdsourcing exercise - <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>. We will try to follow the same coding workflow as in previous articles where possible keeping in mind that each framework has its own way of doing things that needs to be taken into account in order to follow the framework&#8217;s best practices.</p>
 
 <p>The code for this exercise can be obtained from the <a href="https://github.com/arijo/srchr" target="_blank" rel="noopener">github repository</a> with branches for each of the alternative implementations that can be cloned for easier comparison of the different MVC frameworks.</p>
 
-<p>Let&#8217;s start by trying to breakdown srchr (<a href="/static/images/srchr_mock.png">see mockup</a>) into smaller, more manageable components so we can have a base from where we can flesh out the rest of the application.</p>
+<p>Let&#8217;s start by trying to breakdown srchr (<a href="/images/srchr_mock.png">see mockup</a>) into smaller, more manageable components so we can have a base from where we can flesh out the rest of the application.</p>
 
 <h3 id="designing_the_angularjs_application">Designing the AngularJS application</h3>
 
@@ -391,8 +391,8 @@ h1.placeholder {
 }
 </pre>
 <p>You can see how the scaffolded application looks like in the following image:</p>
-<a href="/static/images/angular_srchr_scaffold.png">
-	<img height="480" src="/static/images/angular_srchr_scaffold.png" style="border: 1px solid #999;" title="Srchr application scaffold" width="640">
+<a href="/images/angular_srchr_scaffold.png">
+	<img height="480" src="/images/angular_srchr_scaffold.png" style="border: 1px solid #999;" title="Srchr application scaffold" width="640">
 </a>
 <p>Now let&#8217;s split the application overall behaviour into three interdependent use cases:</p>
 
@@ -541,8 +541,8 @@ srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
 });
 </pre>
 <p>Bellow is a diagram showing how the above controllers will cooperate in order to dispatch a search initiated by the user. The idea is that SearchBarCtrl will handle the user interaction with the search button by triggering a semantic search event. This event will then be caught by MainCtrl that then forwards it to HistoryCtrl which does its jobs by updating the search entry list.</p>
-<a href="/static/images/srchr_angular_search_bar_history_interaction_diagram.png">
-	<img src="/static/images/srchr_angular_search_bar_history_interaction_diagram.png" title="SearchBar/History interaction diagram">
+<a href="/images/srchr_angular_search_bar_history_interaction_diagram.png">
+	<img src="/images/srchr_angular_search_bar_history_interaction_diagram.png" title="SearchBar/History interaction diagram">
 </a>
 <p>Notice we a reference to the <strong>searchStore</strong> service, a localStorage wrapper we use to persist search history across page refreshes. AngularJS uses dependency injection to provide this service to HistoryCtrl. Let&#8217;s go ahead and scaffold this service using yeoman:</p>
 <pre class="brush: bash">
@@ -618,8 +618,8 @@ srchrApp.factory('searchStore', function() {
 		...
 </pre>
 <p>You can see how the application looks so far in the image bellow:</p>
-<a href="/static/images/angular_srchr_search_bar_history.png">
-	<img height="480" src="/static/images/angular_srchr_search_bar_history.png" style="border: 1px solid #999;" title="SearchBar/History interaction" width="640">
+<a href="/images/angular_srchr_search_bar_history.png">
+	<img height="480" src="/images/angular_srchr_search_bar_history.png" style="border: 1px solid #999;" title="SearchBar/History interaction" width="640">
 </a>
 <h3 id="use_case_2_as_an_user_when_i_click_the_search_button_the_relevant_tab_opens_and_search_results_show_up_on_the_search_results_panel"><strong>Use Case #2</strong>: As an user, when I click the search button, the relevant tab opens and search results show up on the search results panel</h3>
 
@@ -759,8 +759,8 @@ srchrApp.controller('AnswersSearchResultsCtrl', function($scope, answers) {
 ...
 </pre>
 <p>The following diagram describes the sequence of interactions that takes place between the controllers:</p>
-<a href="/static/images/srchr_angular_search_bar_search_results_interaction_diagram.png">
-	<img src="/static/images/srchr_angular_search_bar_search_results_interaction_diagram.png" title="SearchBar/SearchResults interaction">
+<a href="/images/srchr_angular_search_bar_search_results_interaction_diagram.png">
+	<img src="/images/srchr_angular_search_bar_search_results_interaction_diagram.png" title="SearchBar/SearchResults interaction">
 </a>
 <p>Now all we have to do is to update the scss styles:</p>
 
@@ -843,8 +843,8 @@ tabs {
 ...
 </pre>
 <p>And this is how the application looks with all the changes so far:</p>
-<a href="/static/images/angular_srchr_search_bar_search_results.png">
-	<img height="480" src="/static/images/angular_srchr_search_bar_search_results.png" style="border: 1px solid #999;" title="SearchBar/SearchResults interaction" width="640">
+<a href="/images/angular_srchr_search_bar_search_results.png">
+	<img height="480" src="/images/angular_srchr_search_bar_search_results.png" style="border: 1px solid #999;" title="SearchBar/SearchResults interaction" width="640">
 </a>
 <h3 id="use_case_3_as_an_user_when_i_select_a_previous_search_from_the_history_panel_the_relevant_tab_opens_and_the_search_results_show_up_on_the_results_panel"><strong>Use Case #3</strong>: As an user, when I select a previous search from the history panel, the relevant tab opens and the search results show up on the results panel</h3>
 
@@ -889,14 +889,14 @@ srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
 });
 </pre>
 <p>This simple diagram explains the changes to the code described above:</p>
-<a href="/static/images/srchr_angular_history_search_results_interaction_diagram.png">
-	<img src="/static/images/srchr_angular_history_search_results_interaction_diagram.png" title="History/SearchResults interaction">
+<a href="/images/srchr_angular_history_search_results_interaction_diagram.png">
+	<img src="/images/srchr_angular_history_search_results_interaction_diagram.png" title="History/SearchResults interaction">
 </a>
 <h3 id="final_thoughts">Final thoughts</h3>
 
 <p>In this article we&#8217;ve used the <a href="http://angularjs.org" target="_blank" rel="noopener">AngularJS</a> framework to implement <a href="http://rmurphey.com" target="_blank" rel="noopener">Rebecca Murphey</a>&#8217;s javascript community challenge, <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>.</p>
 
-<p>Being a markup driven framework it was not possible to follow with precision the same implementation workflow as we did for the previous frameworks (<a href="/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">ExtJS</a>, <a href="/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">JavascriptMVC</a> and <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">BackboneJs</a>), due to the fact that markup driven frameworks make it difficult to breakdown the application into a natural set of javascript components.</p>
+<p>Being a markup driven framework it was not possible to follow with precision the same implementation workflow as we did for the previous frameworks (<a href="/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">ExtJS</a>, <a href="/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">JavascriptMVC</a> and <a href="/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">BackboneJs</a>), due to the fact that markup driven frameworks make it difficult to breakdown the application into a natural set of javascript components.</p>
 
 <p>The solution to this problem was to use the magic tool of wishful thinking and to start designing the views for the main layout first, embedding the directives I wish were available in the markup and postponing their implementation to a later iteration of the application.</p>
 
@@ -910,10 +910,10 @@ srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
 	<!--nav class="pagenation">
 		<ul>
 			
-				<li class="before left"><a rel="prev" href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/" title="View How to build a large, single-page javascript application with Backbone.js">&laquo; Previous</a></li>
+				<li class="before left"><a rel="prev" href="/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/" title="View How to build a large, single-page javascript application with Backbone.js">&laquo; Previous</a></li>
 			
 			
-				<li class="next right"><a rel="next" href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/" title="View How to build a large, single-page javascript application with KnockoutJS">Next &raquo;</a></li>
+				<li class="next right"><a rel="next" href="/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/" title="View How to build a large, single-page javascript application with KnockoutJS">Next &raquo;</a></li>
 			
 		</ul>
 	</nav-->
@@ -922,11 +922,11 @@ srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
 	  <h2>Related Posts</h2>
 	  <ul class="posts">
 	    
-	      <li><span>10 Oct 2013</span> &raquo; <a href="/blog/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
+	      <li><span>10 Oct 2013</span> &raquo; <a href="/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
 	    
-	      <li><span>21 Apr 2013</span> &raquo; <a href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
+	      <li><span>21 Apr 2013</span> &raquo; <a href="/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
 	    
-	      <li><span>05 Jan 2013</span> &raquo; <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">How to build a large, single-page javascript application with Backbone.js</a></li>
+	      <li><span>05 Jan 2013</span> &raquo; <a href="/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">How to build a large, single-page javascript application with Backbone.js</a></li>
 	    
 	  </ul>
 	</div-->
@@ -973,15 +973,15 @@ srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
 
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/static/js/script.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
 
-	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		SyntaxHighlighter.all();
 	</script>
