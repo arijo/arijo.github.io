@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="How to build a large, single-page javascript application with AngularJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to build a large, single-page javascript application with AngularJs">
+<meta property="og:url" content="http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/index.html">
+<meta property="og:site_name" content="Alexandre Gomes">
+<meta property="og:description" content="How to build a large, single-page javascript application with AngularJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			I">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://firmamento.org/static/images/angular_srchr_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_angular_search_bar_history_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/static/images/angular_srchr_search_bar_history.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_angular_search_bar_search_results_interaction_diagram.png">
+<meta property="og:image" content="http://firmamento.org/static/images/angular_srchr_search_bar_search_results.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_angular_history_search_results_interaction_diagram.png">
+<meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to build a large, single-page javascript application with AngularJs">
+<meta name="twitter:description" content="How to build a large, single-page javascript application with AngularJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			I">
+<meta name="twitter:image" content="http://firmamento.org/static/images/angular_srchr_scaffold.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to build a large, single-page javascript application with AngularJs</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&text=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&is_video=false&description=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a large, single-page javascript application with AngularJs&body=Check out this article: http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&name=How to build a large, single-page javascript application with AngularJs&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#designing_the_angularjs_application"><span class="toc-number">1.</span> <span class="toc-text">Designing the AngularJS application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolding_the_angularjs_application"><span class="toc-number">2.</span> <span class="toc-text">Scaffolding the AngularJS application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use_case_1_as_an_user_when_i_click_the_search_button_the_history_panel_is_updated_with_a_new_search_entry"><span class="toc-number">3.</span> <span class="toc-text">Use Case #1: As an user, when I click the search button, the history panel is updated with a new search entry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use_case_2_as_an_user_when_i_click_the_search_button_the_relevant_tab_opens_and_search_results_show_up_on_the_search_results_panel"><span class="toc-number">4.</span> <span class="toc-text">Use Case #2: As an user, when I click the search button, the relevant tab opens and search results show up on the search results panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use_case_3_as_an_user_when_i_select_a_previous_search_from_the_history_panel_the_relevant_tab_opens_and_the_search_results_show_up_on_the_results_panel"><span class="toc-number">5.</span> <span class="toc-text">Use Case #3: As an user, when I select a previous search from the history panel, the relevant tab opens and the search results show up on the results panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final_thoughts"><span class="toc-number">6.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to build a large, single-page javascript application with AngularJs
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Alexandre Gomes</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2013-01-20T00:00:00.000Z" itemprop="datePublished">2013-01-20</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <!doctype html>
+<html itemscope="" itemtype="http://schema.org/Organization" lang="en">
+		<meta charset="utf-8">
+
+
+		<title>How to build a large, single-page javascript application with AngularJs</title>
+		<meta name="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta itemprop="name" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with AngularJs - Alex Gomes">
+		<meta itemprop="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta property="og:title" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with AngularJs - Alex Gomes">
+		<meta property="og:type" content="company">
+		<meta property="og:url" content="http://firmamento.org/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">
+		<meta property="og:image" content="http://firmamento.org/img.png">
+		<meta property="og:site_name" content="Alex Gomes">
+
+		<meta name="keywords" content="angular,angularjs,javascript,javascript patterns,javascript application patterns,javascript architecture,javascript application architecture,mvc,single-page,srchr,organizing,large javascript application,freelance javascript developer,Rebecca Murphey">
+
+
+		<meta name="robots" content="noodp">
+
+		<meta property="fb:app_id" content="462212497146008">
+		<meta property="fb:admins" content="505965699">
+		<link rel="canonical" href="http://firmamento.org/">
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" media="all" href="/static/css/style.css">
+		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+	
+		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+
+		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="http://feeds.feedburner.com/arijo" rel="alternate" title="firmamento.org | Javascript Development, Consulting, and Training" type="application/atom+xml">
+		<link rel="search" type="application/opensearchdescription+xml" title="Website" href="opensearch.xml">
+	
+	
+	<body class="url_blog_2013_01_20_how_to_build_a_large_single_page_javascript_application_using_angularjs_ categories_javascript categories_mvc categories_srchr categories_how to build a large, single_page javascript application tags_angular tags_angularjs tags_javascript tags_javascript patterns tags_javascript application patterns tags_javascript architecture tags_javascript application architecture tags_mvc tags_single_page tags_srchr tags_organizing tags_large javascript application tags_freelance javascript developer tags_Rebecca Murphey layout_post">
+
+		<div id="wrapper">
+
+			<div id="main">
+				<div class="inner">
+
+
+
+
+ 
+<div id="primary" role="main">  
+
+
+	<article class="post">
+
+		<div class="post-content">
+			<p>In this article, we follow-up on my <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">last post</a> and use <a href="http://angularjs.org" target="_blank" rel="noopener">angularjs</a> to implement <a href="http://rmurphey.com" target="_blank" rel="noopener">Rebecca Murphey&#8217;s</a> javascript&#8217;s community crowdsourcing exercise - <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>. We will try to follow the same coding workflow as in previous articles where possible keeping in mind that each framework has its own way of doing things that needs to be taken into account in order to follow the framework&#8217;s best practices.</p>
+
+<p>The code for this exercise can be obtained from the <a href="https://github.com/arijo/srchr" target="_blank" rel="noopener">github repository</a> with branches for each of the alternative implementations that can be cloned for easier comparison of the different MVC frameworks.</p>
+
+<p>Let&#8217;s start by trying to breakdown srchr (<a href="/static/images/srchr_mock.png">see mockup</a>) into smaller, more manageable components so we can have a base from where we can flesh out the rest of the application.</p>
+
+<h3 id="designing_the_angularjs_application">Designing the AngularJS application</h3>
+
+<p>AngularJS differs from the previous frameworks in which it doesn&#8217;t make it easy to breakdown our exercise application into natural javascript components - instead, angularjs is a markup driven (vs javascript component driven) framework and in order to design srchr &#8220;the angularjs way&#8221; we need to breakdown the application into angularjs views (html templates) and organize the remaining components (controllers, services, filters and directives) around them.</p>
+
+<p>Instead of splitting srchr into simpler components we&#8217;ll diverge from the implementation workflow followed in the previous articles and begin our effort by first writing the markup for the higher level views and then go ahead and flesh out the markup for each of the sub-views. While writing the markup for the top and then for the sub-views we will use wishfull thinking and pretend we already have implemented the controllers, models and directives embedded in the markup. We&#8217;ll then use <a href="http://yeoman.io" target="_blank" rel="noopener">yeoman</a> to scaffold those components so we can quickly have something working we can iterate from in the rest of the article.</p>
+
+<h3 id="scaffolding_the_angularjs_application">Scaffolding the AngularJS application</h3>
+
+<p>First, let&#8217;s use the yeoman tool to generate the seed files for our exercise application:</p>
+<pre class="brush: bash">
+	mkdir srchr
+	cd srchr
+	yeoman init angular
+</pre>
+<p>Next, let&#8217;s modify the generated html files so we can start fleshing out the overall layout for our application:</p>
+<strong>srchr/app/index.html</strong><pre class="brush: diff; highlight: [5]">
+         &lt;![endif]-->
+ 
+         &lt;!-- Add your site or application content here -->
+-        &lt;div class="container" ng-view>&lt;/div>
++        &lt;div class="container" ng-include="'views/main.html'">&lt;/div>
+ 
+         &lt;script src="scripts/vendor/angular.js">&lt;/script>
+ 
+</pre><strong>srchr/app/views/main.html</strong><pre class="brush: html">
+&lt;div class="main">
+	&lt;div class="search-bar" ng-include="'views/search_bar.html'">&lt;/div>
+	&lt;div class="search-container">
+		&lt;div class="history" ng-include="'views/history.html'">&lt;/div>
+		&lt;tabs cur-tab="twitter">
+			&lt;ul>
+				&lt;li class="tab" data-tab-id="twitter">Twitter&lt;/li>
+				&lt;li class="tab" data-tab-id="answers">Answers&lt;/li>
+			&lt;/ul>
+			&lt;div class="panel twitter" ng-include="'views/search_results/twitter.html'">&lt;/div>
+			&lt;div class="panel answers" ng-include="'views/search_results/answers.html'">&lt;/div>
+		&lt;/tabs>
+	&lt;/div>
+&lt;/div>
+</pre>
+<p>Notice how we broke <strong>srchr/app/views/main.html</strong> markup down into four sub-views (search_bar.html, history.html, twitter.html and answers.html) and a <em>tabs</em> directive. By using the magic tool of wishful thinking we ended up with an overall design for our application. Now we need to scaffold all these views and directives so we can get something running as quickly as possible:</p>
+<strong>srchr/app/views/search_bar.html</strong><pre class="brush: html">
+&lt;h1 class="placeholder">SEARCH BAR PLACEHOLDER&lt;/div>
+</pre><strong>srchr/app/views/history.html</strong><pre class="brush: html">
+&lt;h1 class="placeholder">HISTORY PLACEHOLDER&lt;/div>
+</pre><strong>srchr/app/views/search_results/twitter.html</strong><pre class="brush: html">
+&lt;h1 class="placeholder">TWITTER SEARCH RESULTS PLACEHOLDER&lt;/div>
+</pre><strong>srchr/app/views/search_results/answers.html</strong><pre class="brush: html">
+&lt;h1 class="placeholder">ANSWERS SEARCH RESULTS PLACEHOLDER&lt;/div>
+</pre>
+<p>In order to see how our layout will look like with the tabs working let&#8217;s go ahead and implement the tabs directive:</p>
+<pre class="brush: bash">
+	yeoman init angular:directive tabs
+</pre><strong>srchr/app/scripts/directives/tabs.js</strong><pre class="brush: js">
+srchrApp.directive('tabs', function() {
+        return {
+                restrict: 'E',
+                scope: {
+                        curTab: '@'
+                },
+                compile: function(cElem, cAttrs) {
+
+                        var ulChildren = cElem.find('ul').children(),
+                            children = cElem.children(),
+                            // HELPER FUNCTION TO FILTER ELEMENTS BY CLASSNAME 
+                            // (BECAUSE jqLITE DOES NOT IMPLEMENT FILTER BY CLASSNAME)
+                            filterByClassName = function(els, className) {
+                                var result = [];
+                                angular.forEach(els, function(el, i) {
+                                        if(angular.element(el).hasClass(className)) {
+                                                result.push(el);
+                                        }
+                                });
+                                return result.length == 1 ? result[0] : result;
+                            },
+                            // GET THE TAB (LI) ELEMENTS
+                            tabEls = filterByClassName(ulChildren, 'tab'),
+                            // GET THE PANEL ELEMENTS
+                            panelEls = filterByClassName(children, 'panel');
+                        // FOR EACH TAB (LI ELEMENT) DO ...
+                        angular.forEach(tabEls, function(tabEl, i) {
+
+                                var $tabEl = angular.element(tabEl),
+                                    tabId = $tabEl.attr('data-tab-id'),
+                                    $panelEl = angular.element(filterByClassName(panelEls, tabId));
+
+                                    // ... INSTRUMENT IT WITH CLICK HANDLERS THAT SET curTab TO ITS tabId ...
+                                    $tabEl.attr('ng-click', 'curTab=\'' + tabId + '\'');
+                                    // ... INSTRUMENT IT SO IT HAS current CLASSNAME WHEN SELECTED ...
+                                    $tabEl.attr('ng-class', '{current: curTab==\'' + tabId + '\'}');
+
+                                    // ... INSTRUMENT ITS PANEL SO THAT IT SHOWS WHEN curTab EQUALS ITS tabId ...
+                                    $panelEl.attr('ng-show', 'curTab==\'' + tabId + '\'');
+                                    // ... INSTRUMENT ITS PANEL SO THAT IT HIDES WHEN curTab IS NOT ITS tabId
+                                    $panelEl.attr('ng-hide', 'curTab!=\'' + tabId + '\'');
+                        });
+
+                        angular.element(cElem).addClass('tabs-wrap');
+
+                        return function link(scope, lElem, lAttrs) {
+
+                                // USE THE DIRECTIVE's cur-tab ATTRIBUTE TO DECIDE 
+                                // WHICH TAB TO ACTIVATE WHEN THE APPLICATION LOADS
+                                scope.curTab = lAttrs.curTab;
+                        };
+                }
+        };
+});
+</pre>
+<p>The sass styles needed to give structure and skin to the scaffolded application:</p>
+
+<p><strong>srchr/app/styles/_scss.scss</strong></p>
+<pre class="brush: sass">
+h1.placeholder {
+	font-size: 1.4em;
+	padding: 10px;
+}
+
+.container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 0;
+	margin: 0;  
+	.search-bar {
+		height: 60px;
+		border-bottom: 1px solid #999;
+	}
+	.search-container {
+		position: absolute;
+		top: 61px;
+		right: 0;
+		bottom: 0;
+		left: 0; 
+		.history {
+			width: 320px;
+			height: 100%;
+			border-right: 1px solid #999;
+		}
+		tabs {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 321px;
+			ul {
+				list-style: none;
+				height: 20px;
+				border-bottom: 1px solid #999;
+				li {
+					float: left;
+					height: 100%;
+					margin:0 0 0 2px;
+					padding: 0 5px;
+					border-top: 1px solid #999;
+					border-right: 1px solid #999;
+					border-left: 1px solid #999;
+					font-weight: bold;
+					color: #fff;
+					background-color: #ccc;
+					cursor: pointer;
+					&amp;.current {
+						font-weight: normal;
+						color: #000;
+						background-color: #fff;
+					}
+				}
+			}
+			.panel {
+				position: absolute;
+				top: 21px;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+		}
+	}
+}
+</pre>
+<p>You can see how the scaffolded application looks like in the following image:</p>
+<a href="/static/images/angular_srchr_scaffold.png">
+	<img height="480" src="/static/images/angular_srchr_scaffold.png" style="border: 1px solid #999;" title="Srchr application scaffold" width="640">
+</a>
+<p>Now let&#8217;s split the application overall behaviour into three interdependent use cases:</p>
+
+<ul>
+<li><strong>Use Case #1</strong>: As an user, when I click the search button, the history panel is updated with a new search entry</li>
+
+<li><strong>Use Case #2</strong>: As an user, when I click the search button, the relevant tab opens and search results show up on the search results panel</li>
+
+<li><strong>Use Case #3</strong>: As an user, when I select a previous search from the history panel, the relevant tab opens and the search results show up on the results panel</li>
+</ul>
+
+<p>and let&#8217;s work on each of these, one at a time.</p>
+
+<h3 id="use_case_1_as_an_user_when_i_click_the_search_button_the_history_panel_is_updated_with_a_new_search_entry"><strong>Use Case #1</strong>: As an user, when I click the search button, the history panel is updated with a new search entry</h3>
+
+<p>Following the markup driven approach we&#8217;ve been developing so far let&#8217;s begin by fleshing out the views for <strong>srchr/app/views/search_bar.html</strong> and <strong>srchr/app/views/history.html</strong>, using the wishful thinking technique by embedding all the necessary directives in the markup as we go along. After writing down all the necessary markup we&#8217;ll use yeoman to scaffold all the controllers and services we need to make <strong>Use Case #1</strong> run.</p>
+
+<p><strong>srchr/app/views/search_bar.html</strong> <pre class="brush: html">
+&lt;div ng-controller="SearchBarCtrl">
+	&lt;div class="search-box">
+		&lt;label for="query">Query&lt;/label>
+		&lt;input id="query" ng-model="search.query">
+		&lt;button ng-click="performSearch()">Search&lt;/button>
+		&lt;label for="twitter">Twitter&lt;/label>
+		&lt;input id="twitter" type="radio" name="service" ng-model="search.service" value="twitter" checked>
+		&lt;label for="answers">Answers&lt;/label>
+		&lt;input id="answers" type="radio" name="service" ng-model="search.service" value="answers">
+	&lt;/div>
+&lt;/div>
+</pre></p>
+
+<p><strong>srchr/app/views/main.html</strong> <pre class="brush: html; highlight: [1,14]">
+&lt;div class="main" ng-controller="MainCtrl">
+        &lt;div class="search-bar" ng-include="'views/search_bar.html'">&lt;/div>
+        &lt;div class="search-container">
+                &lt;div class="history" ng-include="'views/history.html'">&lt;/div>
+                &lt;tabs cur-tab="twitter">
+                        &lt;ul>   
+                                &lt;li class="tab" data-tab-id="twitter">Twitter&lt;/li>
+                                &lt;li class="tab" data-tab-id="answers">Answers&lt;/li>
+                        &lt;/ul>
+                        &lt;div class="panel twitter" ng-include="'views/search_results/twitter.html'">&lt;/div>
+                        &lt;div class="panel answers" ng-include="'views/search_results/answers.html'">&lt;/div>
+                &lt;/tabs>
+        &lt;/div>
+&lt;/div>
+</pre></p>
+
+<p><strong>srchr/app/views/history.html</strong> <pre class="brush: html">
+&lt;div ng-controller="HistoryCtrl">
+        &lt;ul class="searches">
+                &lt;li class="search" ng-repeat="search in searches"
+                                   ng-mouseenter="hover=true" 
+                                   ng-mouseleave="hover=false" 
+                                   ng-class="{hover: hover}">
+                        &lt;span class="query">&lt;/span>
+                        (&lt;span class="service">&lt;/span>)
+                        &lt;span class="remove" ng-click="remove(search)">X&lt;/span>
+                &lt;/li>
+        &lt;/ul>
+&lt;/div>
+</pre></p>
+
+<p>Next we use yeoman to scaffold the controllers embedded in the markup:</p>
+<pre class="brush: bash">
+	yeoman init angular:controller search_bar
+	yeoman init angular:controller history
+</pre>
+<p>The code for the controllers:</p>
+
+<p><strong>srchr/app/controllers/search_bar.js</strong></p>
+<pre class="brush: js">
+srchrApp.controller('SearchBarCtrl', function($scope) {
+
+	// DEFAULT SEARCH SERVICE TO TWITTER
+	$scope.search = {
+		query: '',
+		service: 'twitter'
+	};
+
+	// HANDLE THE USER DOING A SEARCH
+	$scope.performSearch = function() {
+
+		// LET THE MAIN CONTROLLER KNOW THERE'S A NEW SEARCH TO BE DISPATCHED
+		$scope.$emit('search', {
+			query: $scope.search.query,
+			service: $scope.search.service,
+			// THIS SEARCH IS NOT COMING FROM HISTORY
+			isNew: true
+		});
+	}
+});
+</pre>
+<p><strong>srchr/app/controllers/main.js</strong></p>
+<pre class="brush: js">
+srchrApp.controller('MainCtrl', function($scope) {
+
+        // TABS DEFAULT PANEL IS TWITTER SEARCH RESULTS
+        $scope.curTab = 'twitter';
+
+        // LISTEN FOR SEARCH EVENTS
+        $scope.$on('search', function(ev, search) {
+
+                // PREVENT INFINITE LOOP ON BROADCAST
+                if(ev.targetScope == $scope) return;
+
+                // LET HISTORY AND SEARCH RESULTS CONTROLLERS
+                // KNOW THERE'S A NEW SEARCH TO BE DISPATCHED
+                $scope.$broadcast('search', search);
+
+                // SHOW THE TABS PANEL THAT MATCHES THE SEARCH SERVICE
+                $scope.curTab = search.service;
+        });
+});
+</pre>
+<p><strong>srchr/app/controllers/history.js</strong></p>
+<pre class="brush: js">
+srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
+
+        // GET THE SEARCH LOCAL STORAGE SERVICE
+        var searches = $scope.searches = searchStore.get();
+
+        // LISTEN FOR SEARCH EVENTS
+        $scope.$on('search', function(ev, search) {
+
+                // IS THIS COMING FROM SEARCH BAR?
+                if(search.isNew) {
+
+                        // IF SO THEN UPDATE HISTORY'S SEARCH LIST ...
+                        searches.push(search);
+
+                        // ... AND UPDATE LOCAL STORAGE
+                        searchStore.put(searches);
+                }
+        });
+
+        // HANDLE THE USER REMOVING A SEARCH
+        $scope.remove = function(search) {
+
+                // REMOVE THE SEARCH FROM HISTORY'S SEARCH LIST ...
+                searches.splice(searches.indexOf(search), 1);
+
+                // ... AND UPDATE LOCAL STORAGE
+                searchStore.put(searches);
+        }
+});
+</pre>
+<p>Bellow is a diagram showing how the above controllers will cooperate in order to dispatch a search initiated by the user. The idea is that SearchBarCtrl will handle the user interaction with the search button by triggering a semantic search event. This event will then be caught by MainCtrl that then forwards it to HistoryCtrl which does its jobs by updating the search entry list.</p>
+<a href="/static/images/srchr_angular_search_bar_history_interaction_diagram.png">
+	<img src="/static/images/srchr_angular_search_bar_history_interaction_diagram.png" title="SearchBar/History interaction diagram">
+</a>
+<p>Notice we a reference to the <strong>searchStore</strong> service, a localStorage wrapper we use to persist search history across page refreshes. AngularJS uses dependency injection to provide this service to HistoryCtrl. Let&#8217;s go ahead and scaffold this service using yeoman:</p>
+<pre class="brush: bash">
+	yeoman init angular:service search_store
+</pre>
+<p><strong>srchr/app/scripts/services/search_store.js</strong></p>
+<pre class="brush: js">
+srchrApp.factory('searchStore', function() {
+    
+  var STORAGE_ID = 'srchr-angularjs';
+    
+  return {
+
+    get: function() {
+
+      return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+    },
+    put: function(searches) {
+
+        localStorage.setItem(STORAGE_ID, JSON.stringify(searches));
+    }
+  };
+});
+</pre>
+<p>The changes to the sass files (changes highlighted):</p>
+
+<p><strong>srchr/app/styles/_srchr.scss</strong></p>
+<pre class="brush: sass; highlight: [4,5,6,7,8,9,10,11,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41]">
+...
+.search-bar {
+	height: 60px;
+	background-color: #ccc;
+	border-bottom: 1px solid #aaa;
+	.search-box { 
+		padding: 18px;
+		input {
+			border: 1px solid #aaa;
+		}
+	}
+}
+.search-container {
+	position: absolute;
+	top: 61px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	.history {
+		width: 320px;
+		height: 100%;
+		border-right: 1px solid #aaa;
+		.searches {
+			.search {
+				padding: 10px;
+				border-bottom: 1px solid #999;
+				cursor: pointer;
+				.service {
+					font-weight: bold;
+				}
+				.remove {
+					display: inline-block;
+					margin: 0 0 0 5px;
+					font-weight: bold;
+					cursor: pointer;
+				}
+				&amp;.hover {
+					background-color: #ffc;
+				}
+			}
+		}
+	}
+	tabs {
+		position: absolute;
+		...
+</pre>
+<p>You can see how the application looks so far in the image bellow:</p>
+<a href="/static/images/angular_srchr_search_bar_history.png">
+	<img height="480" src="/static/images/angular_srchr_search_bar_history.png" style="border: 1px solid #999;" title="SearchBar/History interaction" width="640">
+</a>
+<h3 id="use_case_2_as_an_user_when_i_click_the_search_button_the_relevant_tab_opens_and_search_results_show_up_on_the_search_results_panel"><strong>Use Case #2</strong>: As an user, when I click the search button, the relevant tab opens and search results show up on the search results panel</h3>
+
+<p>Now we move on to <strong>Use Case #2</strong> and implement the views for <strong>srchr/app/views/search_results/twitter.html</strong> and <strong>srchr/app/views/search_results/answers.html</strong> adding the necessary controller and (other) directives as we flesh out the markup.</p>
+
+<p><strong>srchr/app/views/search_results/twitter.html</strong> <pre class="brush: html">
+&lt;div ng-controller="TwitterSearchResultsCtrl">
+	&lt;ul class="results">
+		&lt;li class="result" ng-repeat="result in results">
+			&lt;img class="avatar" ng-src="">
+			&lt;div class="info">
+				&lt;div class="user-info">
+					&lt;span class="user-name">&lt;/span>
+					&lt;span class="user">@&lt;/span>
+				&lt;/div>
+				&lt;div class="text">&lt;/div>
+			&lt;/div>
+		&lt;/li>
+	&lt;/ul>
+&lt;/div>
+</pre></p>
+
+<p><strong>srchr/app/views/search_results/answers.html</strong> <pre class="brush: html">
+&lt;div ng-controller="AnswersSearchResultsCtrl">
+	&lt;ul class="results">
+		&lt;li class="result" ng-repeat="result in results">
+			&lt;div class="info">
+				&lt;div class="question">
+					&lt;label>Question:&lt;/label>
+					&lt;span class="text">&lt;/span>
+				&lt;/div>
+				&lt;div class="answer">
+					&lt;label class="answer">Answer:&lt;/label>
+					&lt;span class="text">&lt;/span>
+				&lt;/div>
+			&lt;/div>
+		&lt;/li>
+	&lt;/ul>
+&lt;/div>
+</pre></p>
+
+<p>Scaffolding the controllers:</p>
+<pre class="brush: bash">
+	yeoman init angular:controller twitter_search_results
+	yeoman init angular:controller answers_search_results
+</pre>
+<p><strong>srchr/app/controllers/twitter_search_results.js</strong></p>
+<pre class="brush: js">
+srchrApp.controller('TwitterSearchResultsCtrl', function($scope, twitter) {
+
+        // SEARCH RESULTS EMPTY BY DEFAULT
+        $scope.results = [];
+
+        // LISTEN FOR USER INITIATED SEARCH EVENTS
+        $scope.$on('search', function(ev, search) {
+
+                // ONLY ACCEPT TWITTER SEARCH EVENTS
+                if(search.service != 'twitter') return;
+
+                // QUERY TWITTER SEARCH API
+                twitter.search({
+                        q: search.query
+                    },
+                    $scope.searchComplete,
+                    $scope.errorSearching
+                );
+        });
+
+        // IS THE SEARCH SUCCESSFUL?
+        $scope.searchComplete = function(results) {
+
+                // IF SO THEN UPDATE THE VIEW
+                $scope.results = results;
+        };
+
+        // IF THERE WAS AN ERROR SEARCHING ...
+        $scope.errorSearching = function(data, status, headers, config) {
+
+                // ... THEN OUTPUT THE ERROR MESSAGE TO THE CONSOLE
+                console.log(data);
+        };
+});
+</pre>
+<p><strong>srchr/app/controllers/answers_search_results.js</strong></p>
+<pre class="brush: js">
+srchrApp.controller('AnswersSearchResultsCtrl', function($scope, answers) {
+
+        // SEARCH RESULTS EMPTY BY DEFAULT
+        $scope.results = [];
+
+        // LISTEN FOR USER INITIATED SEARCH EVENTS
+        $scope.$on('search', function(ev, search) {
+
+                // ONLY ACCEPT YAHOO ANSWERS SEARCH EVENTS
+                if(search.service != 'answers') return;
+
+                // QUERY YAHOO'S YQL ANSWERS API
+                answers.search({
+                        q: search.query
+                    },
+                    $scope.searchComplete,
+                    $scope.errorSearching
+                );
+        });
+
+        // IS THE SEARCH SUCCESSFUL?
+        $scope.searchComplete = function(results) {
+
+                // IF SO THEN UPDATE VIEW
+                $scope.results = results;
+        };
+
+        // IF THERE WAS AN ERROR SEARCHING ...
+        $scope.errorSearching = function(data, status, headers, config) {
+
+                // ... THEN OUTPUT THE ERROR MESSAGE TO THE CONSOLE
+                console.log(data);
+        };
+});
+</pre>
+<p>We also need to update the <strong>tabs</strong> directive so that the appropriate tab opens when a search is performed (changes to the file highlighted):</p>
+
+<p><strong>srchr/app/views/main.html</strong></p>
+<pre class="brush: html; highlight: [4]">
+...
+&lt;div class="search-container">
+	&lt;div class="history" ng-include="'views/history.html'">&lt;/div>
+	&lt;tabs cur-tab="&#123;&#123;curTab&#125;&#125;">
+		&lt;ul>   
+			&lt;li class="tab" data-tab-id="twitter">Twitter&lt;/li>
+			&lt;li class="tab" data-tab-id="answers">Answers&lt;/li>
+		&lt;/ul>
+		&lt;div class="panel twitter" ng-include="'views/search_results/twitter.html'">&lt;/div>
+		&lt;div class="panel answers" ng-include="'views/search_results/answers.html'">&lt;/div>
+	&lt;/tabs>
+&lt;/div>
+...
+</pre>
+<p>The following diagram describes the sequence of interactions that takes place between the controllers:</p>
+<a href="/static/images/srchr_angular_search_bar_search_results_interaction_diagram.png">
+	<img src="/static/images/srchr_angular_search_bar_search_results_interaction_diagram.png" title="SearchBar/SearchResults interaction">
+</a>
+<p>Now all we have to do is to update the scss styles:</p>
+
+<p><strong>srchr/apps/styles/_scrhr.scss</strong></p>
+<pre class="brush: sass; highlight: [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73]">
+...
+tabs {
+	...
+	.twitter,
+	.answers {
+		position: absolute;
+		top: 21px;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		overflow: auto;
+		.results {
+			border-bottom: none;
+		}
+	}
+	.twitter {
+		.results {
+			.result {
+				position: relative;
+				height: 80px;
+				border-bottom: 1px solid #999;
+				.avatar {
+					position: absolute;
+					top: 5px;
+					width: 64px;
+					bottom: 5px;
+					left: 5px;
+					border: 1px solid #999;
+				}
+				.info {
+					position: absolute;
+					top: 5px;
+					left: 80px;
+					bottom: 5px;
+					right: 5px;
+					.user-info {
+						margin: 0 0 5px 0;
+						.user-name {
+							display: inline-block;
+							margin: 0 0 0 1px;
+							font-weight: bold;
+						}
+						.user {
+							display: inline-block;
+							margin: 0 0 0 1px;
+							color: #999;
+						}
+					}
+					.text {
+						margin: 2px 0 0 0;
+					}
+				}
+			}
+		}
+	}
+	.answers {
+		.results {
+			.result {
+				padding: 5px;
+				border-bottom: 1px solid #999;
+				.info {
+					.question, .answer {
+						padding: 2px 0 2px 0;
+						label {
+							font-weight: bold;
+						}
+						.text {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+...
+</pre>
+<p>And this is how the application looks with all the changes so far:</p>
+<a href="/static/images/angular_srchr_search_bar_search_results.png">
+	<img height="480" src="/static/images/angular_srchr_search_bar_search_results.png" style="border: 1px solid #999;" title="SearchBar/SearchResults interaction" width="640">
+</a>
+<h3 id="use_case_3_as_an_user_when_i_select_a_previous_search_from_the_history_panel_the_relevant_tab_opens_and_the_search_results_show_up_on_the_results_panel"><strong>Use Case #3</strong>: As an user, when I select a previous search from the history panel, the relevant tab opens and the search results show up on the results panel</h3>
+
+<p>In order to finalize the application we make the following simple changes (changes to the code highlighted):</p>
+
+<p><strong>srchr/app/views/history.html</strong></p>
+<pre class="brush: html; highlight: [4]">
+&lt;div ng-controller="HistoryCtrl">
+        &lt;ul class="searches">
+                &lt;li class="search" ng-repeat="search in searches"
+                                   ng-click="select(search)" 
+                                   ng-mouseenter="hover=true" 
+                                   ng-mouseleave="hover=false" 
+                                   ng-class="{hover: hover}">
+                        &lt;span class="query">&lt;/span>
+                        (&lt;span class="service">&lt;/span>)
+                        &lt;span class="remove" ng-click="remove(search)">X&lt;/span>
+                &lt;/li>
+        &lt;/ul>
+&lt;/div>
+</pre>
+<p><strong>srchr/app/scripts/controllers/history.js</strong></p>
+<pre class="brush: js; highlight: [8,9,10,11,12,13]">
+srchrApp.controller('HistoryCtrl', function($scope, searchStore) {
+	...
+        // LISTEN FOR SEARCH EVENTS
+        $scope.$on('search', function(ev, search) {
+		...
+        });
+
+        $scope.select = function(search) {
+
+                search.isNew = false;
+
+                $scope.$emit('search', search);
+        }
+
+        // HANDLE THE USER REMOVING A SEARCH
+        $scope.remove = function(search) {
+		...
+        }
+});
+</pre>
+<p>This simple diagram explains the changes to the code described above:</p>
+<a href="/static/images/srchr_angular_history_search_results_interaction_diagram.png">
+	<img src="/static/images/srchr_angular_history_search_results_interaction_diagram.png" title="History/SearchResults interaction">
+</a>
+<h3 id="final_thoughts">Final thoughts</h3>
+
+<p>In this article we&#8217;ve used the <a href="http://angularjs.org" target="_blank" rel="noopener">AngularJS</a> framework to implement <a href="http://rmurphey.com" target="_blank" rel="noopener">Rebecca Murphey</a>&#8217;s javascript community challenge, <a href="https://github.com/rmurphey/srchr" target="_blank" rel="noopener">srchr</a>.</p>
+
+<p>Being a markup driven framework it was not possible to follow with precision the same implementation workflow as we did for the previous frameworks (<a href="/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">ExtJS</a>, <a href="/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">JavascriptMVC</a> and <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">BackboneJs</a>), due to the fact that markup driven frameworks make it difficult to breakdown the application into a natural set of javascript components.</p>
+
+<p>The solution to this problem was to use the magic tool of wishful thinking and to start designing the views for the main layout first, embedding the directives I wish were available in the markup and postponing their implementation to a later iteration of the application.</p>
+
+<p>A github repository with a branch for each of the different implementations can be cloned from <a href="https://github.com/arijo/srchr" target="_blank" rel="noopener">this github page</a> so you can easely compare the different versions.</p>
+
+<p>Thank you for reading this article.</p>
+		</div><!-- .post-content -->
+		<footer class="post-footer"></footer><!-- .post-footer -->
+	</article><!-- .post -->
+
+	<!--nav class="pagenation">
+		<ul>
+			
+				<li class="before left"><a rel="prev" href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/" title="View How to build a large, single-page javascript application with Backbone.js">&laquo; Previous</a></li>
+			
+			
+				<li class="next right"><a rel="next" href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/" title="View How to build a large, single-page javascript application with KnockoutJS">Next &raquo;</a></li>
+			
+		</ul>
+	</nav-->
+
+	<!--div id="related" class="clear">
+	  <h2>Related Posts</h2>
+	  <ul class="posts">
+	    
+	      <li><span>10 Oct 2013</span> &raquo; <a href="/blog/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
+	    
+	      <li><span>21 Apr 2013</span> &raquo; <a href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
+	    
+	      <li><span>05 Jan 2013</span> &raquo; <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">How to build a large, single-page javascript application with Backbone.js</a></li>
+	    
+	  </ul>
+	</div-->
+
+
+</div>
+
+				<!--
+<div id="secondery">
+
+	<div class="social-links">
+
+
+              <ul>
+              	<li><a href="http://facebook.com/alexandre.o.gomes" target="_blank"><span>Facebook</span>linke us</a></li>
+              	<li><a href="http://twitter.com/arijo" target="_blank"><span>Twitter</span>Follow us</a></li>
+              	<li><a href="https://plus.google.com/u/0/104096418598741949588/posts" target="_blank"><span>Google</span>Add to circle</a></li>
+		
+              </ul>
+
+
+
+	</div>
+
+
+
+</div>
+
+-->
+
+
+ 				</div>
+			</div>
+
+
+			
+			<footer id="footer">
+				<div class="inner">
+
+
+				</div>
+			</footer>
+		</div>
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
+
+	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		SyntaxHighlighter.all();
+	</script>
+
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37294507-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		 })();
+
+	</script>
+
+	<!--script type="text/javascript">
+	var clicky_site_ids = clicky_site_ids || [];
+	clicky_site_ids.push(xxxxxxx);
+	(function() {
+	  var s = document.createElement('script');
+	  s.type = 'text/javascript';
+	  s.async = true;
+	  s.src = '//static.getclicky.com/js';
+	  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+	})();
+	</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/xxxxxxxxns.gif" /></p></noscript-->
+
+	</body>
+</html>
+
+
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#designing_the_angularjs_application"><span class="toc-number">1.</span> <span class="toc-text">Designing the AngularJS application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolding_the_angularjs_application"><span class="toc-number">2.</span> <span class="toc-text">Scaffolding the AngularJS application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use_case_1_as_an_user_when_i_click_the_search_button_the_history_panel_is_updated_with_a_new_search_entry"><span class="toc-number">3.</span> <span class="toc-text">Use Case #1: As an user, when I click the search button, the history panel is updated with a new search entry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use_case_2_as_an_user_when_i_click_the_search_button_the_relevant_tab_opens_and_search_results_show_up_on_the_search_results_panel"><span class="toc-number">4.</span> <span class="toc-text">Use Case #2: As an user, when I click the search button, the relevant tab opens and search results show up on the search results panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use_case_3_as_an_user_when_i_select_a_previous_search_from_the_history_panel_the_relevant_tab_opens_and_the_search_results_show_up_on_the_results_panel"><span class="toc-number">5.</span> <span class="toc-text">Use Case #3: As an user, when I select a previous search from the history panel, the relevant tab opens and the search results show up on the results panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final_thoughts"><span class="toc-number">6.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&text=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&is_video=false&description=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a large, single-page javascript application with AngularJs&body=Check out this article: http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&title=How to build a large, single-page javascript application with AngularJs"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/&name=How to build a large, single-page javascript application with AngularJs&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Alexandre Gomes
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

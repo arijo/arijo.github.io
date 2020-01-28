@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="How to build a large, single-page javascript application with JavascriptMVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to build a large, single-page javascript application with JavascriptMVC">
+<meta property="og:url" content="http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/index.html">
+<meta property="og:site_name" content="Alexandre Gomes">
+<meta property="og:description" content="How to build a large, single-page javascript application with JavascriptMVC">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_mock.png">
+<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_components.png">
+<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_files.png">
+<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_searchbar_history.png">
+<meta property="og:image" content="http://firmamento.org/static/images/jmvc_srchr_searchbar_search_results.png">
+<meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to build a large, single-page javascript application with JavascriptMVC">
+<meta name="twitter:description" content="How to build a large, single-page javascript application with JavascriptMVC">
+<meta name="twitter:image" content="http://firmamento.org/static/images/srchr_mock.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to build a large, single-page javascript application with JavascriptMVC</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&text=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&is_video=false&description=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a large, single-page javascript application with JavascriptMVC&body=Check out this article: http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&name=How to build a large, single-page javascript application with JavascriptMVC&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#designing_the_javascriptmvc_application"><span class="toc-number">1.</span> <span class="toc-text">Designing the JavascriptMVC application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolding_the_javascriptmvc_components"><span class="toc-number">2.</span> <span class="toc-text">Scaffolding the JavascriptMVC components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srchrsearchbarsrchrhistory_component_interaction"><span class="toc-number">3.</span> <span class="toc-text">Srchr.SearchBar/Srchr.History component interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srchrsearchbarsrchrsearchresults_component_interaction"><span class="toc-number">4.</span> <span class="toc-text">Srchr.SearchBar/Srchr.SearchResults component interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#historysearchresults_ineraction"><span class="toc-number">5.</span> <span class="toc-text">History/SearchResults ineraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final_thoughts"><span class="toc-number">6.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to build a large, single-page javascript application with JavascriptMVC
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Alexandre Gomes</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2012-12-28T00:00:00.000Z" itemprop="datePublished">2012-12-28</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <!doctype html>
+<html itemscope="" itemtype="http://schema.org/Organization" lang="en">
+		<meta charset="utf-8">
+
+
+		<title>How to build a large, single-page javascript application with JavascriptMVC</title>
+		<meta name="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta itemprop="name" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with JavascriptMVC - Alex Gomes">
+		<meta itemprop="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta property="og:title" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with JavascriptMVC - Alex Gomes">
+		<meta property="og:type" content="company">
+		<meta property="og:url" content="http://firmamento.org/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">
+		<meta property="og:image" content="http://firmamento.org/img.png">
+		<meta property="og:site_name" content="Alex Gomes">
+
+		<meta name="keywords" content="javascriptmvc,javascript,javascript patterns,javascript application patterns,javascript architecture,javascript application architecture,mvc,single-page,srchr,organizing,large javascript application,freelance javascript developer,Rebecca Murphey">
+
+
+		<meta name="robots" content="noodp">
+
+		<meta property="fb:app_id" content="462212497146008">
+		<meta property="fb:admins" content="505965699">
+		<link rel="canonical" href="http://firmamento.org/">
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" media="all" href="/static/css/style.css">
+		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+	
+		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+
+		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="http://feeds.feedburner.com/arijo" rel="alternate" title="firmamento.org | Javascript Development, Consulting, and Training" type="application/atom+xml">
+		<link rel="search" type="application/opensearchdescription+xml" title="Website" href="opensearch.xml">
+	
+	
+	<body class="url_blog_2012_12_28_how_to_build_a_large_single_page_javascript_application_using_javascriptmvc_ categories_javascript categories_mvc categories_srchr categories_how to build a large, single_page javascript application tags_javascriptmvc tags_javascript tags_javascript patterns tags_javascript application patterns tags_javascript architecture tags_javascript application architecture tags_mvc tags_single_page tags_srchr tags_organizing tags_large javascript application tags_freelance javascript developer tags_Rebecca Murphey layout_post">
+
+		<div id="wrapper">
+
+
+			<div id="main">
+				<div class="inner">
+
+
+
+
+ 
+<div id="primary" role="main">  
+
+
+	<article class="post">
+
+		<div class="post-content">
+			<p>In <a href="http://firmamento.org/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">my previous article</a> I&#8217;ve described in detail how to implement Rebecca Murphey&#8217;s Srchr application using the ExtJs framework. In this article I&#8217;ll use the <a href="http://javascriptmvc.com/" target="_blank" rel="noopener">JavascriptMVC framework</a> for the same purpose. We&#8217;ll follow the same code flow as in the previous article and start by breaking down the application into smaller javascriptmvc components and then work on each of the main component interactions, one at a time.</p>
+<a href="/static/images/srchr_mock.png">
+	<img height="480" src="/static/images/srchr_mock.png" title="Searchr application mockup" width="640">
+</a>
+<h3 id="designing_the_javascriptmvc_application">Designing the JavascriptMVC application</h3>
+
+<p>Let&#8217;s start by breaking down the srchr application into a small set of components we will use to bootstrap our development effort:</p>
+<a href="/static/images/jmvc_srchr_components.png">
+	<img height="480" src="/static/images/jmvc_srchr_components.png" title="Searchr application components" width="640">
+</a>
+<p>The folder structure for our application:</p>
+<a href="/static/images/jmvc_srchr_files.png">
+	<img src="/static/images/jmvc_srchr_files.png" title="Searchr application file organization">
+</a>
+<p>To reproduce the steps described in this tutorial you&#8217;ll have to <a href="https://github.com/downloads/bitovi/javascriptmvc/javascriptmvc-3.2.4.zip" target="_blank" rel="noopener">download the JavascriptMVC framework</a> and unzip the archive into the example&#8217;s root folder. These dependencies are required in order to run the code presented in this article.</p>
+
+<h3 id="scaffolding_the_javascriptmvc_components">Scaffolding the JavascriptMVC components</h3>
+
+<p>Let&#8217;s use the JavascritpMVC code generators to create the components that we&#8217;ll be fleshing out in the following steps:</p>
+<div class="highlight"><pre><code class="javascript"><span class="nx">cd</span> <span class="o">&lt;</span><span class="nx">ROOT_FOLDER</span><span class="o">&gt;</span>
+<span class="p">.</span><span class="o">/</span><span class="nx">js</span> <span class="nx">jquery</span><span class="o">/</span><span class="nx">generate</span><span class="o">/</span><span class="nx">app</span> <span class="nx">srchr</span>
+<span class="p">.</span><span class="o">/</span><span class="nx">js</span> <span class="nx">jquery</span><span class="o">/</span><span class="nx">generate</span><span class="o">/</span><span class="nx">app</span> <span class="nx">searchbar</span>
+<span class="nx">mv</span> <span class="nx">searchbar</span> <span class="nx">srchr</span>
+<span class="p">.</span><span class="o">/</span><span class="nx">js</span> <span class="nx">jquery</span><span class="o">/</span><span class="nx">generate</span><span class="o">/</span><span class="nx">app</span> <span class="nx">history</span>
+<span class="nx">mv</span> <span class="nx">history</span> <span class="nx">srchr</span>
+<span class="p">.</span><span class="o">/</span><span class="nx">js</span> <span class="nx">jquery</span><span class="o">/</span><span class="nx">generate</span><span class="o">/</span><span class="nx">app</span> <span class="nx">search_results</span>
+<span class="nx">mv</span> <span class="nx">search_results</span> <span class="nx">srchr</span>
+<span class="p">.</span><span class="o">/</span><span class="nx">js</span> <span class="nx">jquery</span><span class="o">/</span><span class="nx">generate</span><span class="o">/</span><span class="nx">app</span> <span class="nx">tabs</span>
+<span class="nx">mv</span> <span class="nx">tabs</span> <span class="nx">srchr</span>
+</code></pre></div>
+<p>Next we add a little layout coding so we can see something working as soon as possible:</p>
+<strong>srchr/srchr.html</strong><div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;head&gt;</span>
+                <span class="nt">&lt;title&gt;</span>srchr<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;/head&gt;</span>
+        <span class="nt">&lt;body&gt;</span> 
+                <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&#39;srchr_application&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&#39;text/javascript&#39;</span> <span class="na">src=</span><span class="s">&#39;../steal/steal.js?srchr&#39;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div><strong>srchr/srchr.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span>  
+        <span class="s1">&#39;jquery/controller&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;jquery/view/ejs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;jquery/controller/view&#39;</span><span class="p">,</span>
+
+        <span class="s1">&#39;./models/models.js&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>  
+        <span class="s1">&#39;//srchr/views/layout.ejs&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>  
+        <span class="s1">&#39;steal/less&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>  
+
+        <span class="s1">&#39;./srchr.less&#39;</span><span class="p">,</span>
+
+        <span class="kd">function</span><span class="p">(){</span>                                     <span class="c1">// configure your application</span>
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.Application&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;//srchr/views/layout.ejs&#39;</span><span class="p">,</span> <span class="p">{});</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+
+                <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#srchr_application&#39;</span><span class="p">).</span><span class="nx">srchr_application</span><span class="p">();</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/views/layout.ejs</strong><div class="highlight"><pre><code class="erb"><span class="x">&lt;div class=&#39;searchbar&#39;&gt;&lt;h3 class=&#39;placeholder&#39;&gt;SEARCHBAR PLACEHOLDER&lt;/h3&gt;&lt;/div&gt;</span>
+<span class="x">&lt;div class=&#39;container&#39;&gt;</span>
+<span class="x">        &lt;div class=&#39;history&#39;&gt;&lt;h3 class=&#39;placeholder&#39;&gt;HISTORY PLACEHOLDER&lt;/h3&gt;&lt;/div&gt;</span>
+<span class="x">        &lt;div class=&#39;search_results&#39;&gt;&lt;h3 class=&#39;placeholder&#39;&gt;SEARCH RESULTS PLACEHOLDER&lt;/h3&gt;&lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div><strong>srchr/srchr/srchr.less</strong><div class="highlight"><pre><code class="sass"><span class="nt">body</span> <span class="err">{</span>
+        <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+        <span class="na">font-family</span><span class="o">:</span> <span class="n">tahoma</span><span class="o">,</span> <span class="n">arial</span><span class="o">,</span> <span class="n">verdana</span><span class="o">,</span> <span class="no">sans-serif</span><span class="err">;</span>
+        <span class="nn">#srchr_application</span> <span class="err">{</span>
+                <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+                <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                <span class="nc">.searchbar</span> <span class="err">{</span>
+                        <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+                        <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                        <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                        <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                        <span class="na">height</span><span class="o">:</span> <span class="mi">60</span><span class="kt">px</span><span class="err">;</span>
+                        <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+                <span class="err">}</span>
+                <span class="nc">.container</span> <span class="err">{</span>
+                        <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+                        <span class="na">top</span><span class="o">:</span> <span class="mi">61</span><span class="kt">px</span><span class="err">;</span>
+                        <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                        <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                        <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                        <span class="na">border-left</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+                        <span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+                        <span class="na">border-right</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+                        <span class="nc">.history</span> <span class="err">{</span>
+                                <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+                                <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                                <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                                <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                                <span class="na">width</span><span class="o">:</span> <span class="mi">320</span><span class="kt">px</span><span class="err">;</span>
+                                <span class="na">border-right</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+                        <span class="err">}</span>
+                        <span class="nc">.search_results</span> <span class="err">{</span>
+                                <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+                                <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                                <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                                <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+                                <span class="na">left</span><span class="o">:</span> <span class="mi">321</span><span class="kt">px</span><span class="err">;</span>
+                        <span class="err">}</span>
+                <span class="err">}</span>
+                <span class="nt">h3</span><span class="nc">.placeholder</span> <span class="err">{</span>
+                        <span class="na">margin</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+                <span class="err">}</span>
+        <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>And here&#8217;s the end result of the above code snippets:</p>
+<a href="/static/images/jmvc_srchr_scaffold.png">
+	<img height="480" src="/static/images/jmvc_srchr_scaffold.png" style="border: 1px solid #3ba3d0;" title="Searchr application scaffold" width="640">
+</a>
+<h3 id="srchrsearchbarsrchrhistory_component_interaction">Srchr.SearchBar/Srchr.History component interaction</h3>
+
+<p>Following the same coding pattern as in the <a href="http://firmamento.org/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">ExtJs article</a>, we will implement the event driven interaction between Srchr.SearchBar and Srchr.History components: Upon the user hitting the search button, a &#8220;search&#8221; event will be thrown by the Srchr.SearchBar component and caught by the Srchr.Application component that then tells the Srchr.History component to update itself. The relevant changes to our code follow bellow:</p>
+<strong>srchr/searchbar.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span>  
+        <span class="s1">&#39;//srchr/searchbar/views/searchbar.ejs&#39;</span><span class="p">,</span>
+
+        <span class="kd">function</span><span class="p">(){</span>
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.Searchbar&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;//srchr/searchbar/views/searchbar.ejs&#39;</span><span class="p">,</span> <span class="p">{});</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.search click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="kd">var</span> <span class="nx">twitterChecked</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#twitter&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;checked&#39;</span><span class="p">),</span>
+                                    <span class="nx">answersChecked</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#answers&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;checked&#39;</span><span class="p">),</span>
+                                    <span class="nx">query</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#query&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+
+                                <span class="k">if</span><span class="p">(</span><span class="nx">twitterChecked</span><span class="p">)</span> <span class="p">{</span>
+
+                                        <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                                <span class="nx">query</span><span class="o">:</span> <span class="nx">query</span><span class="p">,</span>
+                                                <span class="nx">service</span><span class="o">:</span> <span class="s1">&#39;twitter&#39;</span>
+                                        <span class="p">});</span>
+
+                                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">answersChecked</span><span class="p">)</span> <span class="p">{</span>
+
+                                        <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                                <span class="nx">query</span><span class="o">:</span> <span class="nx">query</span><span class="p">,</span>
+                                                <span class="nx">service</span><span class="o">:</span> <span class="s1">&#39;answers&#39;</span>
+                                        <span class="p">});</span>
+
+                                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+                                        <span class="nx">steal</span><span class="p">.</span><span class="nx">dev</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;Invalid service&#39;</span><span class="p">);</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/searchbar/views/searchbar.ejs</strong><div class="highlight"><pre><code class="erb"><span class="x">&lt;div class=&#39;search_controls&#39;&gt;</span>
+<span class="x">        &lt;label for=&#39;query&#39;&gt;Query:&lt;/label&gt;</span>
+<span class="x">        &lt;input id=&#39;query&#39; type=&#39;text&#39; name=&#39;query&#39; value=&#39;&#39;&gt;</span>
+<span class="x">        &lt;button class=&#39;search&#39;&gt;Search&lt;/button&gt;</span>
+<span class="x">        &lt;label for=&quot;twitter&quot;&gt;Twitter&lt;/label&gt;</span>
+<span class="x">        &lt;input id=&#39;twitter&#39; type=&#39;radio&#39; name=&#39;service&#39; value=&#39;twitter&#39; checked&gt;</span>
+<span class="x">        &lt;label for=&quot;answers&quot;&gt;Answers&lt;/label&gt;</span>
+<span class="x">        &lt;input id=&#39;answers&#39; type=&#39;radio&#39; name=&#39;service&#39; value=&#39;answers&#39;&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div><strong>srchr/srchr.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span> 
+        <span class="s1">&#39;jquery/controller&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;jquery/view/ejs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;jquery/controller/view&#39;</span><span class="p">,</span>
+
+        <span class="s1">&#39;./models/models.js&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span> 
+        <span class="s1">&#39;srchr/searchbar&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;srchr/history&#39;</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span> 
+        <span class="s1">&#39;//srchr/views/layout.ejs&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span> 
+        <span class="s1">&#39;steal/less&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span> 
+
+        <span class="s1">&#39;./srchr.less&#39;</span><span class="p">,</span>
+
+        <span class="kd">function</span><span class="p">(){</span> 
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.Application&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;//srchr/views/layout.ejs&#39;</span><span class="p">,</span> <span class="p">{});</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.searchbar&#39;</span><span class="p">).</span><span class="nx">srchr_searchbar</span><span class="p">()</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.history&#39;</span><span class="p">).</span><span class="nx">srchr_history</span><span class="p">({</span>
+                                        <span class="nx">searches</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Srchr</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Search</span><span class="p">.</span><span class="nx">List</span><span class="p">()</span>
+                                <span class="p">});</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.searchbar search&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">,</span> <span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.history&#39;</span><span class="p">)</span>
+                                        <span class="p">.</span><span class="nx">controller</span><span class="p">()</span>
+                                        <span class="p">.</span><span class="nx">addSearch</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span>
+                        <span class="p">},</span>
+                <span class="p">});</span>
+
+                <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#srchr_application&#39;</span><span class="p">).</span><span class="nx">srchr_application</span><span class="p">();</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/history.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span>
+        <span class="s1">&#39;//srchr/history/views/history.ejs&#39;</span><span class="p">,</span>
+
+        <span class="kd">function</span><span class="p">(){</span>
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.History&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span>
+                                        <span class="s1">&#39;//srchr/history/views/history.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                                <span class="nx">searches</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">searches</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="s1">&#39;searches&#39;</span><span class="p">)</span>
+                                <span class="p">});</span>
+                        <span class="p">},</span>
+
+                        <span class="nx">addSearch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="nx">search</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+                                <span class="nx">steal</span><span class="p">.</span><span class="nx">dev</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">search</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">searches</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+                                        <span class="k">new</span> <span class="nx">Srchr</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span>
+                                <span class="p">);</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">searches</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="s1">&#39;searches&#39;</span><span class="p">);</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;{searches} add&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">searches</span><span class="p">,</span> <span class="nx">ev</span><span class="p">,</span> <span class="nx">delta</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span>
+                                        <span class="s1">&#39;//srchr/history/views/history.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                                <span class="nx">searches</span><span class="o">:</span> <span class="nx">searches</span>
+                                <span class="p">});</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.remove click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;.search&#39;</span><span class="p">).</span><span class="nx">model</span><span class="p">();</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">searches</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">search</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">searches</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="s1">&#39;searches&#39;</span><span class="p">);</span>
+                        <span class="p">},</span>
+                        <span class="s1">&#39;{searches} remove&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">searches</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span>
+                                        <span class="s1">&#39;//srchr/history/views/history.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                                <span class="nx">searches</span><span class="o">:</span> <span class="nx">searches</span>
+                                <span class="p">});</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.search mouseenter&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="nx">el</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;hover&#39;</span><span class="p">);</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.search mouseleave&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="nx">el</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;hover&#39;</span><span class="p">);</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/history/history.ejs</strong><div class="highlight"><pre><code class="javascript"><span class="o">&lt;%</span> <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">searches</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">searches</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="o">%&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s1">&#39;search&#39;</span> <span class="o">&lt;%=</span> <span class="nx">s</span> <span class="o">%&gt;&gt;</span>
+                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s1">&#39;query&#39;</span><span class="o">&gt;&lt;%=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">query</span> <span class="o">%&gt;&lt;</span><span class="err">/span&gt;</span>
+                <span class="p">(</span><span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s1">&#39;service&#39;</span><span class="o">&gt;&lt;%=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">service</span> <span class="o">%&gt;&lt;</span><span class="err">/span&gt;)</span>
+                <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s1">&#39;remove&#39;</span><span class="o">&gt;</span><span class="nx">X</span><span class="o">&lt;</span><span class="err">/span&gt;</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+
+<span class="o">&lt;%</span> <span class="p">}</span> <span class="o">%&gt;</span>
+</code></pre></div><strong>srchr/models/models.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span> <span class="s1">&#39;./search.js&#39;</span><span class="p">,</span> 
+       <span class="s1">&#39;./search_list.js&#39;</span><span class="p">)</span>
+</code></pre></div><strong>srchr/models/search.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span><span class="s1">&#39;jquery/model&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+
+        <span class="nx">$</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="s1">&#39;Srchr.Models.Search&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div><strong>srchr/models/search_list.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span><span class="s1">&#39;jquery/model/list/cookie&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">List</span><span class="p">.</span><span class="nx">Cookie</span><span class="p">(</span><span class="s1">&#39;Srchr.Models.Search.List&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/srchr.less</strong><div class="highlight"><pre><code class="sass"><span class="c1">// ...</span>
+<span class="nn">#srchr_application</span> <span class="err">{</span>
+	<span class="c1">// ...</span>
+	<span class="nc">.searchbar</span> <span class="err">{</span>
+		<span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+		<span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+		<span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+		<span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+		<span class="na">height</span><span class="o">:</span> <span class="mi">60</span><span class="kt">px</span><span class="err">;</span>
+		<span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+		<span class="nc">.searchbar_background_gradient</span><span class="o">;</span>
+		<span class="nc">.search_controls</span> <span class="err">{</span>
+			<span class="na">padding</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+			<span class="nt">label</span> <span class="err">{</span>
+				<span class="na">margin-left</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">color</span><span class="o">:</span> <span class="mh">#fff</span><span class="err">;</span>
+			<span class="err">}</span>
+			<span class="nn">#query</span> <span class="err">{</span>
+				<span class="na">width</span><span class="o">:</span> <span class="mi">200</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">padding</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+			<span class="err">}</span>
+			<span class="nt">button</span> <span class="err">{</span>
+				<span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="err">;</span>
+			<span class="err">}</span>
+			<span class="nn">#twitter</span><span class="o">,</span> <span class="nn">#answers</span> <span class="err">{</span>
+				<span class="na">margin-left</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="err">;</span>
+			<span class="err">}</span>
+		<span class="err">}</span>
+	<span class="err">}</span>
+	<span class="nc">.container</span> <span class="err">{</span>
+		<span class="c1">// ...</span>
+		<span class="nc">.history</span> <span class="err">{</span>
+			<span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+			<span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="na">width</span><span class="o">:</span> <span class="mi">320</span><span class="kt">px</span><span class="err">;</span>
+			<span class="na">border-right</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#3ba3d0</span><span class="err">;</span>
+			<span class="nc">.search</span> <span class="err">{</span>
+				<span class="na">height</span><span class="o">:</span> <span class="mi">25</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+				<span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="err">;</span>
+				<span class="nc">.query</span> <span class="err">{</span>
+					<span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span><span class="err">;</span>
+				<span class="err">}</span>
+				<span class="nc">.remove</span> <span class="err">{</span>
+					<span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="err">;</span>
+				<span class="err">}</span>
+				<span class="k">&amp;</span><span class="nc">.hover</span> <span class="err">{</span>
+					<span class="na">background-color</span><span class="o">:</span> <span class="mh">#ffc</span><span class="err">;</span>
+				<span class="err">}</span>
+			<span class="err">}</span>
+		<span class="err">}</span>
+		<span class="c1">// ...</span>
+</code></pre></div>
+<p>The working app so far:</p>
+<a href="/static/images/jmvc_srchr_searchbar_history.png">
+	<img height="480" src="/static/images/jmvc_srchr_searchbar_history.png" style="border: 1px solid #3ba3d0;" title="SearchBar/History interaction" width="640">
+</a>
+<h3 id="srchrsearchbarsrchrsearchresults_component_interaction">Srchr.SearchBar/Srchr.SearchResults component interaction</h3>
+
+<p>We now move on to the Srchr.SearchBar/Srchr.SearchResults component interaction: when the user clicks the search button and Srchr.SearchBar throws the &#8220;search&#8221; event, Srchr.Application is listening, activates the relevant tab panel and tells the appropriate Srchr.SearchResults component to update itself by searching the choosen service for matching results. The changes to the code follow bellow:</p>
+<strong>srchr/srchr.js</strong><div class="highlight"><pre><code class="javascript"><span class="c1">// ...</span>
+
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>  
+        <span class="s1">&#39;srchr/searchbar&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;srchr/history&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;srchr/tabs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;srchr/search_results&#39;</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>  
+        <span class="s1">&#39;//srchr/views/layout.ejs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;//srchr/search_results/views/twitter.ejs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;//srchr/search_results/views/answers.ejs&#39;</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>  
+
+	<span class="c1">// ...</span>
+
+        <span class="kd">function</span><span class="p">(){</span>                                     <span class="c1">// configure your application</span>
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.Application&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+				<span class="c1">// ...</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tabs_wrapper&#39;</span><span class="p">).</span><span class="nx">srchr_tabs</span><span class="p">();</span>
+
+                                <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#twitter_panel&#39;</span><span class="p">).</span><span class="nx">srchr_search_results</span><span class="p">({</span>
+                                        <span class="nx">model</span><span class="o">:</span> <span class="nx">Srchr</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Twitter</span><span class="p">,</span>
+                                        <span class="nx">view</span><span class="o">:</span> <span class="s1">&#39;//srchr/search_results/views/twitter.ejs&#39;</span>
+                                <span class="p">});</span>
+                                <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#answers_panel&#39;</span><span class="p">).</span><span class="nx">srchr_search_results</span><span class="p">({</span>
+                                        <span class="nx">model</span><span class="o">:</span> <span class="nx">Srchr</span><span class="p">.</span><span class="nx">Models</span><span class="p">.</span><span class="nx">Answers</span><span class="p">,</span>
+                                        <span class="nx">view</span><span class="o">:</span> <span class="s1">&#39;//srchr/search_results/views/answers.ejs&#39;</span>
+                                <span class="p">});</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.searchbar search&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">,</span> <span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+				
+				<span class="c1">// ...</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">performSearch</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                        <span class="p">},</span>
+
+                        <span class="nx">performSearch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">search</span> <span class="o">&amp;&amp;</span> <span class="nx">search</span><span class="p">.</span><span class="nx">service</span><span class="p">,</span>
+                                    <span class="nx">tabId</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nx">service</span><span class="o">+</span><span class="s1">&#39;_panel&#39;</span><span class="p">;</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.srchr_tabs&#39;</span><span class="p">)</span>
+                                        <span class="p">.</span><span class="nx">controller</span><span class="p">()</span>
+                                        <span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">tabId</span><span class="p">);</span>
+
+                                <span class="nx">$</span><span class="p">(</span><span class="nx">tabId</span><span class="p">).</span><span class="nx">controller</span><span class="p">().</span><span class="nx">search</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                        <span class="p">}</span>
+
+			<span class="c1">// ...</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/tabs/tabs.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span> 
+        <span class="kd">function</span><span class="p">(){</span>
+                
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.Tabs&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.panel&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">&#39;#twitter_panel&#39;</span><span class="p">);</span>
+                        <span class="p">},</span>
+
+                        <span class="s1">&#39;.tab a click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="kd">var</span> <span class="nx">tabId</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">tabId</span><span class="p">);</span>
+
+                                <span class="nx">ev</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+
+
+                        <span class="p">},</span>
+
+                        <span class="nx">select</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tabId</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="kd">var</span> <span class="nx">curTabEl</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.current&#39;</span><span class="p">),</span>
+                                    <span class="nx">curTabId</span> <span class="o">=</span> <span class="nx">curTabEl</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">),</span>
+                                    <span class="nx">curPanelEl</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">curTabId</span><span class="p">),</span>
+                                    <span class="nx">newTabEl</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTabEl</span><span class="p">(</span><span class="nx">tabId</span><span class="p">),</span>
+                                    <span class="nx">newPanelEl</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">tabId</span><span class="p">);</span>
+
+                                <span class="nx">curTabEl</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;current&#39;</span><span class="p">);</span>
+                                <span class="nx">curPanelEl</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+
+                                <span class="k">if</span><span class="p">(</span><span class="nx">newTabEl</span><span class="p">)</span> <span class="p">{</span>
+
+                                        <span class="nx">newTabEl</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;current&#39;</span><span class="p">);</span>
+                                        <span class="nx">newPanelEl</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+                                <span class="p">}</span>
+                        <span class="p">},</span>
+
+                        <span class="nx">getTabEl</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="kd">var</span> <span class="nx">tabEls</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tab&#39;</span><span class="p">);</span>
+
+                                <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">tabEls</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+                                        <span class="kd">var</span> <span class="nx">tabEl</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">tabEls</span><span class="p">[</span><span class="nx">i</span><span class="p">]),</span>
+                                            <span class="nx">tabId</span> <span class="o">=</span> <span class="nx">tabEl</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
+
+                                        <span class="k">if</span><span class="p">(</span><span class="nx">tabId</span> <span class="o">===</span> <span class="nx">id</span><span class="p">)</span> <span class="k">return</span> <span class="nx">tabEl</span><span class="p">;</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/search_results/search_results.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span> 
+        <span class="kd">function</span><span class="p">(){</span>
+
+                <span class="nx">$</span><span class="p">.</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;Srchr.SearchResults&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                        <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span>
+                                        <span class="nx">search</span><span class="p">,</span>
+                                        <span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">(</span><span class="s1">&#39;searchComplete&#39;</span><span class="p">),</span>
+                                        <span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">(</span><span class="s1">&#39;searchError&#39;</span><span class="p">)</span>
+                                <span class="p">);</span>
+                        <span class="p">},</span>
+
+                        <span class="nx">searchComplete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">view</span><span class="p">,</span> <span class="p">{</span>
+                                        <span class="nx">results</span><span class="o">:</span> <span class="nx">results</span>
+                                <span class="p">});</span>
+                        <span class="p">},</span>
+
+                        <span class="nx">searchError</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="nx">steal</span><span class="p">.</span><span class="nx">dev</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+        <span class="p">})</span>
+</code></pre></div><strong>srchr/models/twitter.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span><span class="s1">&#39;jquery/model&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+
+        <span class="nx">$</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="s1">&#39;Srchr.Models.Twitter&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+                <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+
+                        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                                <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://search.twitter.com/search.json&#39;</span><span class="p">,</span>
+                                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
+                                <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;jsonp&#39;</span><span class="p">,</span>
+                                <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">q</span><span class="o">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">query</span> <span class="p">},</span>
+                                <span class="nx">success</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">([</span><span class="s1">&#39;searchSuccessful&#39;</span><span class="p">,</span> <span class="nx">success</span><span class="p">]),</span>
+                                <span class="nx">error</span><span class="o">:</span> <span class="nx">error</span>
+                        <span class="p">});</span>
+                <span class="p">},</span>
+
+                <span class="nx">searchSuccessful</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+
+                        <span class="kd">var</span> <span class="nx">instances</span> <span class="o">=</span> <span class="p">[],</span>
+                            <span class="nx">results</span> <span class="o">=</span> <span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">results</span><span class="p">,</span>
+                            <span class="nx">len</span> <span class="o">=</span> <span class="nx">results</span> <span class="o">&amp;&amp;</span> <span class="nx">results</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+                        <span class="k">if</span><span class="p">(</span><span class="nx">results</span> <span class="o">&amp;&amp;</span> <span class="nx">len</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+                                        <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+                                        <span class="nx">instances</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="k">new</span> <span class="k">this</span><span class="p">(</span><span class="nx">r</span><span class="p">));</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+
+                        <span class="k">return</span> <span class="p">[</span><span class="nx">instances</span><span class="p">];</span>
+                <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div><strong>srchr/models/answers.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span><span class="s1">&#39;jquery/model&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+
+        <span class="nx">$</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="s1">&#39;Srchr.Models.Answers&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+                <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+
+                        <span class="kd">var</span> <span class="nx">yql</span> <span class="o">=</span> <span class="s1">&#39;select * from answers.search where query=&quot;&#39;</span> <span class="o">+</span> <span class="nx">params</span><span class="p">.</span><span class="nx">query</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+                        <span class="nx">yql</span> <span class="o">=</span> <span class="nx">yql</span> <span class="o">+</span> <span class="s1">&#39; and type=&quot;resolved&quot;&#39;</span><span class="p">;</span>
+
+                        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                                <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://query.yahooapis.com/v1/public/yql?q=&#39;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">yql</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;format=json&#39;</span><span class="p">,</span>
+                                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
+                                <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;jsonp&#39;</span><span class="p">,</span>
+                                <span class="nx">data</span><span class="o">:</span> <span class="p">{},</span>
+                                <span class="nx">success</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">proxy</span><span class="p">([</span><span class="s1">&#39;searchSuccessful&#39;</span><span class="p">,</span> <span class="nx">success</span><span class="p">]),</span>
+                                <span class="nx">error</span><span class="o">:</span> <span class="nx">error</span>
+                        <span class="p">});</span>
+                <span class="p">},</span>
+
+                <span class="nx">searchSuccessful</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+
+                        <span class="kd">var</span> <span class="nx">instances</span> <span class="o">=</span> <span class="p">[],</span>
+                            <span class="nx">query</span> <span class="o">=</span> <span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">query</span><span class="p">,</span>
+                            <span class="nx">results</span> <span class="o">=</span> <span class="nx">query</span> <span class="o">&amp;&amp;</span> <span class="nx">query</span><span class="p">.</span><span class="nx">results</span><span class="p">,</span>
+                            <span class="nx">question</span> <span class="o">=</span> <span class="nx">results</span> <span class="o">&amp;&amp;</span> <span class="nx">results</span><span class="p">.</span><span class="nx">Question</span><span class="p">,</span>
+                            <span class="nx">len</span> <span class="o">=</span> <span class="nx">question</span> <span class="o">&amp;&amp;</span> <span class="nx">question</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+                        <span class="k">if</span><span class="p">(</span><span class="nx">question</span> <span class="o">&amp;&amp;</span> <span class="nx">len</span><span class="p">)</span> <span class="p">{</span>
+
+                                <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+                                        <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">question</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+                                        <span class="nx">instances</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="k">new</span> <span class="k">this</span><span class="p">(</span><span class="nx">q</span><span class="p">));</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+
+                        <span class="k">return</span> <span class="p">[</span><span class="nx">instances</span><span class="p">];</span>
+                <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div><strong>srchr/models/models.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">steal</span><span class="p">(</span> <span class="s1">&#39;./search.js&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;./search_list.js&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;./twitter.js&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;./answers.js&#39;</span><span class="p">)</span>
+</code></pre></div><strong>srchr/search_results/views/twitter.ejs</strong><div class="highlight"><pre><code class="erb"><span class="cp">&lt;%</span> <span class="k">for</span><span class="p">(</span><span class="n">var</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">results</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">r</span> <span class="o">=</span> <span class="n">results</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span> <span class="cp">%&gt;</span><span class="x">
+
+<span class="x">&lt;div class=&#39;search_result clearfix&#39;&gt;</span>
+<span class="x">        &lt;div class=&#39;avatar&#39;&gt;</span>
+<span class="x">                &lt;img src=&#39;</span><span class="cp">&lt;%=</span> <span class="n">r</span><span class="o">.</span><span class="n">profile_image_url</span> <span class="cp">%&gt;</span><span class="x">&#39;/&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;div class=&#39;info&#39;&gt;</span>
+<span class="x">                &lt;div class=&#39;from_user&#39;&gt;</span><span class="cp">&lt;%=</span> <span class="n">r</span><span class="o">.</span><span class="n">from_user</span> <span class="cp">%&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="x">                &lt;div class=&#39;text&#39;&gt;</span><span class="cp">&lt;%=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span> <span class="cp">%&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+
+<span class="cp">&lt;%</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x">
+</span></span></code></pre></div><strong>srchr/search_results/views/answers.ejs</strong><div class="highlight"><pre><code class="erb"><span class="cp">&lt;%</span> <span class="k">for</span><span class="p">(</span><span class="n">var</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">results</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">r</span> <span class="o">=</span> <span class="n">results</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span> <span class="cp">%&gt;</span><span class="x">
+
+<span class="x">&lt;div class=&quot;search_result answer&quot;&gt;</span>
+<span class="x">        &lt;div class=&quot;info&quot;&gt;</span>
+<span class="x">                &lt;div class=&quot;text&quot;&gt;&lt;span class=&quot;question&quot;&gt;Question:&lt;/span&gt;</span><span class="cp">&lt;%=</span> <span class="n">r</span><span class="o">.</span><span class="n">Content</span> <span class="cp">%&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="x">                &lt;div class=&quot;text&quot;&gt;&lt;span class=&quot;answer&quot;&gt;Answer:&lt;/span&gt;</span><span class="cp">&lt;%=</span> <span class="n">r</span><span class="o">.</span><span class="n">ChosenAnswer</span> <span class="cp">%&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+
+<span class="cp">&lt;%</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x">
+</span></span></code></pre></div><strong>srchr/srchr.less</strong><div class="highlight"><pre><code class="sass"><span class="c1">// GLOBALS</span>
+<span class="na">.searchbar_background_gradient(@startColor</span><span class="o">:</span> <span class="mh">#024a68</span><span class="o">,</span> <span class="o">@</span><span class="n">endColor</span><span class="o">:</span> <span class="mh">#0772a1</span><span class="p">)</span> <span class="err">{</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">-webkit-gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span> <span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span> <span class="mi">100</span><span class="kt">%</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="o">@</span><span class="n">startColor</span><span class="p">)</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="o">,</span> <span class="o">@</span><span class="n">endColor</span><span class="p">))</span><span class="err">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">-webkit-linear-gradient</span><span class="p">(</span><span class="o">@</span><span class="n">startColor</span><span class="o">,</span> <span class="o">@</span><span class="n">endColor</span><span class="p">)</span><span class="err">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">-moz-linear-gradient</span><span class="p">(</span><span class="o">@</span><span class="n">startColor</span><span class="o">,</span> <span class="o">@</span><span class="n">endColor</span><span class="p">)</span><span class="err">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">-o-linear-gradient</span><span class="p">(</span><span class="o">@</span><span class="n">startColor</span><span class="o">,</span> <span class="o">@</span><span class="n">endColor</span><span class="p">)</span><span class="err">;</span>
+  <span class="na">background-image</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="o">@</span><span class="n">startColor</span><span class="o">,</span> <span class="o">@</span><span class="n">endColor</span><span class="p">)</span><span class="err">;</span>
+<span class="err">}</span>
+<span class="na">.rounded_corners(@radius</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">)</span> <span class="err">{</span>
+        <span class="na">-moz-border-radius-topright</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="err">;</span>
+        <span class="na">-moz-border-radius-topleft</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="err">;</span>
+        <span class="na">-webkit-border-top-right-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="err">;</span>
+        <span class="na">-webkit-border-top-left-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="err">;</span>
+        <span class="na">border-top-right-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="err">;</span>
+        <span class="na">border-top-left-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="err">;</span>
+<span class="err">}</span>
+<span class="nc">.clearfix</span><span class="nd">:after</span><span class="err">{</span>
+  <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="err">;</span>
+  <span class="na">content</span><span class="o">:</span> <span class="s2">&quot;.&quot;</span><span class="err">;</span>
+  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="err">;</span>
+  <span class="na">height</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+  <span class="na">visibility</span><span class="o">:</span> <span class="no">hidden</span><span class="err">;</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+<span class="err">}</span>
+<span class="c1">// STYLES</span>
+<span class="nt">body</span> <span class="err">{</span>
+
+	<span class="c1">// ...</span>
+
+	<span class="nc">.search_results</span> <span class="err">{</span>
+		<span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+		<span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+		<span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+		<span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+		<span class="na">left</span><span class="o">:</span> <span class="mi">321</span><span class="kt">px</span><span class="err">;</span>
+		<span class="nc">.tabs_wrapper</span> <span class="err">{</span>
+			<span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+			<span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+			<span class="nc">.tabs</span> <span class="err">{</span>
+				<span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="err">;</span>
+				<span class="na">height</span><span class="o">:</span> <span class="mi">30</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+				<span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+				<span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+				<span class="nc">.tab</span> <span class="err">{</span>
+					<span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="err">;</span>
+					<span class="na">list-style-type</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+					<span class="na">margin</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span><span class="err">;</span>
+					<span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">10</span><span class="kt">px</span><span class="err">;</span>
+					<span class="na">border-top</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+					<span class="na">border-right</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+					<span class="na">border-left</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+					<span class="nc">.searchbar_background_gradient</span><span class="o">;</span>
+					<span class="nc">.rounded_corners</span><span class="o">;</span>
+					<span class="k">&amp;</span><span class="nc">.current</span> <span class="err">{</span>
+						<span class="nt">a</span> <span class="err">{</span>
+							<span class="na">color</span><span class="o">:</span> <span class="mh">#333</span><span class="err">;</span>
+						<span class="err">}</span>
+						<span class="na">background-image</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+						<span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#fff</span><span class="err">;</span>
+					<span class="err">}</span>
+					<span class="nt">a</span> <span class="err">{</span>
+						<span class="na">color</span><span class="o">:</span> <span class="mh">#fff</span><span class="err">;</span>
+						<span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+					<span class="err">}</span>
+				<span class="err">}</span>
+			<span class="err">}</span>
+			<span class="nc">.panel</span> <span class="err">{</span>
+				<span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="err">;</span>
+				<span class="na">top</span><span class="o">:</span> <span class="mi">30</span><span class="kt">px</span><span class="err">;</span>
+				<span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+				<span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+				<span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+				<span class="na">overflow</span><span class="o">:</span> <span class="no">auto</span><span class="err">;</span>
+				<span class="nc">.search_result</span> <span class="err">{</span>
+					<span class="na">padding</span><span class="o">:</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span><span class="err">;</span>
+					<span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+					<span class="nc">.avatar</span> <span class="err">{</span>
+						<span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="err">;</span>
+						<span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span><span class="err">;</span>
+					<span class="err">}</span>
+					<span class="nc">.info</span> <span class="err">{</span>
+						<span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="err">;</span>
+						<span class="nc">.text</span> <span class="err">{</span>
+							<span class="na">max-width</span><span class="o">:</span> <span class="mi">960</span><span class="kt">px</span><span class="err">;</span>
+							<span class="na">padding</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="err">;</span>
+						<span class="err">}</span>
+					<span class="err">}</span>
+					<span class="k">&amp;</span><span class="nc">.answer</span> <span class="err">{</span>
+						<span class="nc">.info</span> <span class="err">{</span>
+							<span class="na">float</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+							<span class="nc">.text</span> <span class="err">{</span>
+								<span class="nc">.question</span><span class="o">,</span>
+								<span class="nc">.answer</span> <span class="err">{</span>
+									<span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span><span class="err">;</span>
+								<span class="err">}</span>
+							<span class="err">}</span>
+						<span class="err">}</span>
+					<span class="err">}</span>
+				<span class="err">}</span>
+			<span class="err">}</span>
+		<span class="err">}</span>
+	<span class="err">}</span>
+</code></pre></div>
+<p>And this is how the resulting code looks like when we run it:</p>
+<a href="/static/images/jmvc_srchr_searchbar_search_results.png">
+	<img height="480" src="/static/images/jmvc_srchr_searchbar_search_results.png" style="border: 1px solid #3ba3d0;" title="SearchBar/SearchResults interaction" width="640">
+</a>
+<h3 id="historysearchresults_ineraction">History/SearchResults ineraction</h3>
+
+<p>Finally, whenever the user clicks an History entry, a search event is thrown to be caught by the Main controller that then tells SearchResults view to update itself.</p>
+
+<p>The relevant code changes:</p>
+<strong>srchr/history/history.js</strong><div class="highlight"><pre><code class="javascript"><span class="c1">// ...</span>
+
+<span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// ...</span>
+<span class="p">},</span>
+
+<span class="s1">&#39;.search click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">model</span><span class="p">();</span>
+	
+	<span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="nx">search</span><span class="p">);</span> 
+<span class="p">},</span>
+
+<span class="nx">addSearch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// ...</span>
+</code></pre></div><strong>srchr/srchr.js</strong><div class="highlight"><pre><code class="javascript"><span class="c1">// ...</span>
+
+<span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// ...</span>
+<span class="p">},</span>
+
+<span class="s1">&#39;.search_bar search&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">,</span> <span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.history&#39;</span><span class="p">)</span>
+		<span class="p">.</span><span class="nx">controller</span><span class="p">()</span>
+		<span class="p">.</span><span class="nx">addSearch</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span>
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">performSearch</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+<span class="p">},</span>
+
+<span class="s1">&#39;.history search&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ev</span><span class="p">,</span> <span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// ...</span>
+</code></pre></div>
+<h3 id="final_thoughts">Final thoughts</h3>
+
+<p>In the next article we&#8217;ll implement the <a href="http://firmamento.org/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">srchr application using backbonejs framework and requirejs dependency manager</a>. If you liked this article please subscribe to the blog&#8217;s feeds to receive other articles on building large client-side javascript applications and javascript development in general.</p>
+
+<p>Thank you for reading this article.</p>
+		</div><!-- .post-content -->
+		<footer class="post-footer"></footer><!-- .post-footer -->
+	</article><!-- .post -->
+
+	<!--nav class="pagenation">
+		<ul>
+			
+				<li class="before left"><a rel="prev" href="/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/" title="View How to build a large, single-page javascript application with ExtJS">&laquo; Previous</a></li>
+			
+			
+				<li class="next right"><a rel="next" href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/" title="View How to build a large, single-page javascript application with Backbone.js">Next &raquo;</a></li>
+			
+		</ul>
+	</nav-->
+
+	<!--div id="related" class="clear">
+	  <h2>Related Posts</h2>
+	  <ul class="posts">
+	    
+	      <li><span>10 Oct 2013</span> &raquo; <a href="/blog/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
+	    
+	      <li><span>21 Apr 2013</span> &raquo; <a href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
+	    
+	      <li><span>20 Jan 2013</span> &raquo; <a href="/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">How to build a large, single-page javascript application with AngularJs</a></li>
+	    
+	  </ul>
+	</div-->
+
+
+</div>
+
+				<!--
+<div id="secondery">
+
+	<div class="social-links">
+
+
+              <ul>
+              	<li><a href="http://facebook.com/alexandre.o.gomes" target="_blank"><span>Facebook</span>linke us</a></li>
+              	<li><a href="http://twitter.com/arijo" target="_blank"><span>Twitter</span>Follow us</a></li>
+              	<li><a href="https://plus.google.com/u/0/104096418598741949588/posts" target="_blank"><span>Google</span>Add to circle</a></li>
+		
+              </ul>
+
+
+
+	</div>
+
+
+
+</div>
+
+-->
+
+
+ 				</div>
+			</div>
+
+
+			
+			<footer id="footer">
+				<div class="inner">
+
+
+				</div>
+			</footer>
+		</div>
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
+
+	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		SyntaxHighlighter.all();
+	</script>
+
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37294507-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		 })();
+
+	</script>
+
+	<!--script type="text/javascript">
+	var clicky_site_ids = clicky_site_ids || [];
+	clicky_site_ids.push(xxxxxxx);
+	(function() {
+	  var s = document.createElement('script');
+	  s.type = 'text/javascript';
+	  s.async = true;
+	  s.src = '//static.getclicky.com/js';
+	  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+	})();
+	</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/xxxxxxxxns.gif" /></p></noscript-->
+
+	</body>
+</html>
+
+
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#designing_the_javascriptmvc_application"><span class="toc-number">1.</span> <span class="toc-text">Designing the JavascriptMVC application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolding_the_javascriptmvc_components"><span class="toc-number">2.</span> <span class="toc-text">Scaffolding the JavascriptMVC components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srchrsearchbarsrchrhistory_component_interaction"><span class="toc-number">3.</span> <span class="toc-text">Srchr.SearchBar/Srchr.History component interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srchrsearchbarsrchrsearchresults_component_interaction"><span class="toc-number">4.</span> <span class="toc-text">Srchr.SearchBar/Srchr.SearchResults component interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#historysearchresults_ineraction"><span class="toc-number">5.</span> <span class="toc-text">History/SearchResults ineraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final_thoughts"><span class="toc-number">6.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&text=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&is_video=false&description=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a large, single-page javascript application with JavascriptMVC&body=Check out this article: http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&title=How to build a large, single-page javascript application with JavascriptMVC"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/&name=How to build a large, single-page javascript application with JavascriptMVC&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Alexandre Gomes
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="How to build a large, single-page javascript application with ExtJS 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			This">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to build a large, single-page javascript application with ExtJS">
+<meta property="og:url" content="http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/index.html">
+<meta property="og:site_name" content="Alexandre Gomes">
+<meta property="og:description" content="How to build a large, single-page javascript application with ExtJS 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			This">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_mock.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_components.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_files.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_searchbar_history.png">
+<meta property="og:image" content="http://firmamento.org/static/images/srchr_searchbar_searchresults.png">
+<meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to build a large, single-page javascript application with ExtJS">
+<meta name="twitter:description" content="How to build a large, single-page javascript application with ExtJS 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			This">
+<meta name="twitter:image" content="http://firmamento.org/static/images/srchr_mock.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to build a large, single-page javascript application with ExtJS</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&text=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&is_video=false&description=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a large, single-page javascript application with ExtJS&body=Check out this article: http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&name=How to build a large, single-page javascript application with ExtJS&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#designing_the_extjs_application"><span class="toc-number">1.</span> <span class="toc-text">Designing the ExtJs application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolding_the_extjs_components"><span class="toc-number">2.</span> <span class="toc-text">Scaffolding the ExtJs components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implementing_the_searchbarhistory_interaction"><span class="toc-number">3.</span> <span class="toc-text">Implementing the SearchBar/History interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implementing_the_searchbarsearchresults_interaction"><span class="toc-number">4.</span> <span class="toc-text">Implementing the SearchBar/SearchResults interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#historysearchresults_ineraction"><span class="toc-number">5.</span> <span class="toc-text">History/SearchResults ineraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final_thoughts"><span class="toc-number">6.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to build a large, single-page javascript application with ExtJS
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Alexandre Gomes</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2012-10-20T00:00:00.000Z" itemprop="datePublished">2012-10-20</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <!doctype html>
+<html itemscope="" itemtype="http://schema.org/Organization" lang="en">
+		<meta charset="utf-8">
+
+
+		<title>How to build a large, single-page javascript application with ExtJS</title>
+		<meta name="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta itemprop="name" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with ExtJS - Alex Gomes">
+		<meta itemprop="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta property="og:title" content="Javascript Development, Consulting, and Training - How to build a large, single-page javascript application with ExtJS - Alex Gomes">
+		<meta property="og:type" content="company">
+		<meta property="og:url" content="http://firmamento.org/blog/2012/12/20/how-to-build-a-large-single-page-javascript-application-using-extjs/">
+		<meta property="og:image" content="http://firmamento.org/img.png">
+		<meta property="og:site_name" content="Alex Gomes">
+
+		<meta name="keywords" content="javascript,javascript patterns,javascript application patterns,javascript architecture,javascript application architecture,mvc,single-page,ExtJs,srchr,organizing,large javascript application,freelance javascript developer,Rebecca Murphey">
+
+
+		<meta name="robots" content="noodp">
+
+		<meta property="fb:app_id" content="462212497146008">
+		<meta property="fb:admins" content="505965699">
+		<link rel="canonical" href="http://firmamento.org/">
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" media="all" href="/static/css/style.css">
+		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+	
+		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+
+		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="http://feeds.feedburner.com/arijo" rel="alternate" title="firmamento.org | Javascript Development, Consulting, and Training" type="application/atom+xml">
+		<link rel="search" type="application/opensearchdescription+xml" title="Website" href="opensearch.xml">
+	
+	
+	<body class="url_blog_2012_12_20_how_to_build_a_large_single_page_javascript_application_using_extjs_ categories_javascript categories_mvc categories_srchr categories_how to build a large, single_page javascript application tags_javascript tags_javascript patterns tags_javascript application patterns tags_javascript architecture tags_javascript application architecture tags_mvc tags_single_page tags_ExtJs tags_srchr tags_organizing tags_large javascript application tags_freelance javascript developer tags_Rebecca Murphey layout_post">
+
+		<div id="wrapper">
+
+			<div id="main">
+				<div class="inner">
+
+
+
+
+ 
+<div id="primary" role="main">  
+
+
+	<article class="post">
+
+		<div class="post-content">
+			<p>This is the first of a series of posts about building large client-side single-page javascript applications using javascript MVC frameworks.</p>
+
+<p>We&#8217;ll use Rebecca Murphey&#8217;s srchr application as the common theme accross the various MVC frameworks we&#8217;ll be using to show the development workflow of building a large single-page javascript application.</p>
+<a href="/static/images/srchr_mock.png">
+	<img height="480" src="/static/images/srchr_mock.png" title="Searchr application mockup" width="640">
+</a>
+<h3 id="designing_the_extjs_application">Designing the ExtJs application</h3>
+
+<p>Let&#8217;s start by breaking down the srchr application into smaller, more manageable ExtJs components:</p>
+<a href="/static/images/srchr_components.png">
+	<img height="480" src="/static/images/srchr_components.png" title="Searchr application components" width="640">
+</a>
+<p>And here&#8217;s the file organization we&#8217;ll use to build the application:</p>
+<a href="/static/images/srchr_files.png">
+	<img src="/static/images/srchr_files.png" title="Srchr application files">
+</a>
+<h3 id="scaffolding_the_extjs_components">Scaffolding the ExtJs components</h3>
+
+<p>The next step is to quickly scaffold our application components so we can have something upon wich we can incrementally build the larger application:</p>
+<strong>srchr.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">application</span><span class="p">({</span>
+	<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Srchr&#39;</span><span class="p">,</span>
+	<span class="nx">appFolder</span><span class="o">:</span> <span class="s1">&#39;srchr&#39;</span><span class="p">,</span>
+	<span class="nx">launch</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;Srchr.view.Viewport&#39;</span><span class="p">,</span> <span class="p">{});</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><br><strong>srchr/view/Viewport.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.Viewport&#39;</span><span class="p">,</span> <span class="p">{</span>
+	<span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.Viewport&#39;</span><span class="p">,</span>
+	<span class="nx">requires</span><span class="o">:</span> <span class="p">[</span>
+		<span class="s1">&#39;Srchr.view.SearchBar&#39;</span><span class="p">,</span>
+		<span class="s1">&#39;Srchr.view.History&#39;</span><span class="p">,</span>
+		<span class="s1">&#39;Srchr.view.SearchResults&#39;</span>
+	<span class="p">],</span>
+	<span class="nx">layout</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;fit&#39;</span>
+	<span class="p">},</span>
+	<span class="nx">initComponent</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;panel&#39;</span><span class="p">,</span>
+			<span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr&#39;</span><span class="p">,</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">dockedItems</span> <span class="o">=</span> <span class="p">[</span>
+				<span class="k">this</span><span class="p">.</span><span class="nx">createSearchBar</span><span class="p">(),</span>
+				<span class="k">this</span><span class="p">.</span><span class="nx">createHistory</span><span class="p">()</span>
+			<span class="p">];</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span>
+				<span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;tabs&#39;</span><span class="p">,</span>
+				<span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;tabpanel&#39;</span><span class="p">,</span>
+				<span class="nx">layout</span><span class="o">:</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span>
+				<span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+					<span class="k">this</span><span class="p">.</span><span class="nx">createTwitterSearchResults</span><span class="p">(),</span>
+					<span class="k">this</span><span class="p">.</span><span class="nx">createAnswersSearchResults</span><span class="p">()</span>
+				<span class="p">]</span>
+			<span class="p">}]</span>
+		<span class="p">];</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">callParent</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+	<span class="p">},</span>
+	<span class="nx">createSearchBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">searchBar</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.searchbar&#39;</span><span class="p">,</span> <span class="p">{</span>
+			<span class="nx">dock</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+			<span class="nx">height</span><span class="o">:</span> <span class="mi">60</span>	
+		<span class="p">});</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">searchBar</span><span class="p">;</span>
+	<span class="p">},</span>
+	<span class="nx">createHistory</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">history</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.history&#39;</span><span class="p">,</span> <span class="p">{</span>
+			<span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span>
+			<span class="nx">dock</span><span class="o">:</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span>
+			<span class="nx">width</span><span class="o">:</span> <span class="mi">320</span>
+		<span class="p">});</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">history</span><span class="p">;</span>
+	<span class="p">},</span>
+	<span class="nx">createTwitterSearchResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">twitterSearchResults</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.searchresults&#39;</span><span class="p">,</span> <span class="p">{</span>
+			<span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;twittersearchresults&#39;</span><span class="p">,</span>
+			<span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Twitter Search Results Placeholder&#39;</span>
+		<span class="p">});</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">twitterSearchResults</span><span class="p">;</span>
+	<span class="p">},</span>
+	<span class="nx">createAnswersSearchResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">answersSearchResults</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.searchresults&#39;</span><span class="p">,</span> <span class="p">{</span>
+			<span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;answerssearchresults&#39;</span><span class="p">,</span>
+			<span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Answers Search Results Placeholder&#39;</span>
+		<span class="p">});</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">answersSearchResults</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/view/SearchBar.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.SearchBar&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.Component&#39;</span><span class="p">,</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="s1">&#39;widget.searchbar&#39;</span><span class="p">,</span>
+        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-searchbar&#39;</span><span class="p">,</span>
+        <span class="nx">html</span><span class="o">:</span> <span class="s1">&#39;&lt;h1&gt;SearchBar Placeholder&lt;/h1&gt;&#39;</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/view/History.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.History&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.Component&#39;</span><span class="p">,</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="s1">&#39;widget.history&#39;</span><span class="p">,</span>
+        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-history&#39;</span><span class="p">,</span>
+        <span class="nx">html</span><span class="o">:</span> <span class="s1">&#39;&lt;h1&gt;History Placeholder&lt;/h1&gt;&#39;</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/view/SearchResults.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.SearchResults&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.Component&#39;</span><span class="p">,</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="s1">&#39;widget.searchresults&#39;</span><span class="p">,</span>
+        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-searchresults&#39;</span><span class="p">,</span>
+        <span class="nx">html</span><span class="o">:</span> <span class="s1">&#39;&lt;h1&gt;SearchResults Placeholder&lt;/h1&gt;&#39;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>And this is the resulting bare-bones app:</p>
+<a href="/static/images/srchr_scaffold.png">
+	<img height="480" src="/static/images/srchr_scaffold.png" style="border:1px solid #00B6DE;" title="Srchr scaffolding" width="640">
+</a>
+<h3 id="implementing_the_searchbarhistory_interaction">Implementing the SearchBar/History interaction</h3>
+
+<p>Instead of trying to implement everything at the same time let&#8217;s pick a part of the application we can develop in a standalone manner: the SearchBar/History components interaction.</p>
+
+<p>Basically, the SearchBar component will throw a &#8216;search&#8217; event each time the user performs a search on a specific service (twitter or answers), the Main controller will catch the event and then tell the History component to update itself.</p>
+
+<p>The model&#8217;s code:</p>
+<strong>srchr/model/Search.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.model.Search&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Model&#39;</span><span class="p">,</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s1">&#39;query&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;service&#39;</span>
+        <span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The store&#8217;s code:</p>
+<strong>srchr/store/Searches.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.store.Searches&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Store&#39;</span><span class="p">,</span>
+        <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;localstorage&#39;</span><span class="p">,</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;searches&#39;</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Here&#8217;s the code to flesh out the Search component:</p>
+<strong>srchr/view/SearchBar.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.SearchBar&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.form.Panel&#39;</span><span class="p">,</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="s1">&#39;widget.searchbar&#39;</span><span class="p">,</span>
+        <span class="nx">layout</span><span class="o">:</span> <span class="s1">&#39;hbox&#39;</span><span class="p">,</span>
+        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-searchbar&#39;</span><span class="p">,</span>
+        <span class="nx">border</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">initComponent</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span>
+                        <span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;textfield&#39;</span><span class="p">,</span>
+                        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;query&#39;</span><span class="p">,</span>
+                        <span class="nx">fieldLabel</span><span class="o">:</span> <span class="s1">&#39;Query&#39;</span><span class="p">,</span>
+                        <span class="nx">labelWidth</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
+                        <span class="nx">padding</span><span class="o">:</span> <span class="s1">&#39;0 5 0 0&#39;</span><span class="p">,</span>
+                <span class="p">},{</span>
+                        <span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;button&#39;</span><span class="p">,</span>
+                        <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Search&#39;</span><span class="p">,</span>
+                        <span class="nx">listeners</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="nx">scope</span><span class="o">:</span> <span class="k">this</span><span class="p">,</span>
+                                <span class="nx">click</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">search</span>
+                        <span class="p">}</span>
+                <span class="p">},{</span>
+                        <span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;radiofield&#39;</span><span class="p">,</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;twitter&#39;</span><span class="p">,</span>
+                        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span>
+                        <span class="nx">inputValue</span><span class="o">:</span> <span class="s1">&#39;twitter&#39;</span><span class="p">,</span>
+                        <span class="nx">fieldLabel</span><span class="o">:</span> <span class="s1">&#39;Twitter&#39;</span><span class="p">,</span>
+                        <span class="nx">labelWidth</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
+                        <span class="nx">padding</span><span class="o">:</span> <span class="s1">&#39;0 5 0 25&#39;</span><span class="p">,</span>
+                        <span class="nx">listeners</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="nx">beforeRender</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+                                        <span class="nx">field</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+                <span class="p">},{</span>
+                        <span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;radiofield&#39;</span><span class="p">,</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;answers&#39;</span><span class="p">,</span>
+                        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span>
+                        <span class="nx">inputValue</span><span class="o">:</span> <span class="s1">&#39;answers&#39;</span><span class="p">,</span>
+                        <span class="nx">fieldLabel</span><span class="o">:</span> <span class="s1">&#39;Answers&#39;</span><span class="p">,</span>
+                        <span class="nx">labelWidth</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
+                        <span class="nx">padding</span><span class="o">:</span> <span class="s1">&#39;0 10 0 5&#39;</span>
+                <span class="p">}];</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">callParent</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getForm</span><span class="p">(),</span>
+                    <span class="nx">input</span> <span class="o">=</span> <span class="nx">form</span> <span class="o">&amp;&amp;</span> <span class="nx">form</span><span class="p">.</span><span class="nx">findField</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">),</span>
+                    <span class="nx">twitter</span> <span class="o">=</span> <span class="nx">form</span> <span class="o">&amp;&amp;</span> <span class="nx">form</span><span class="p">.</span><span class="nx">findField</span><span class="p">(</span><span class="s1">&#39;twitter&#39;</span><span class="p">),</span>
+                    <span class="nx">answers</span> <span class="o">=</span> <span class="nx">form</span> <span class="o">&amp;&amp;</span> <span class="nx">form</span><span class="p">.</span><span class="nx">findField</span><span class="p">(</span><span class="s1">&#39;answers&#39;</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">if</span><span class="p">(</span><span class="nx">twitter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">())</span> <span class="p">{</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                        <span class="nx">query</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">getValue</span><span class="p">(),</span>
+                                        <span class="nx">service</span><span class="o">:</span> <span class="s1">&#39;twitter&#39;</span><span class="p">,</span>
+                                        <span class="nx">isNew</span><span class="o">:</span> <span class="kc">true</span>
+                                <span class="p">});</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">answers</span><span class="p">.</span><span class="nx">getValue</span><span class="p">())</span> <span class="p">{</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="p">{</span>
+                                        <span class="nx">query</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">getValue</span><span class="p">(),</span>
+                                        <span class="nx">service</span><span class="o">:</span> <span class="s1">&#39;answers&#39;</span><span class="p">,</span>
+                                        <span class="nx">isNew</span><span class="o">:</span> <span class="kc">true</span>
+                                <span class="p">});</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Bad search terms&#39;</span><span class="p">);</span>
+                        <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The Main controller:</p>
+<strong>srchr/controller/Main.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.controller.Main&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.app.Controller&#39;</span><span class="p">,</span>
+        <span class="nx">stores</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Searches&#39;</span><span class="p">],</span>
+        <span class="nx">models</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Search&#39;</span><span class="p">],</span>
+        <span class="nx">views</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s1">&#39;SearchBar&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;History&#39;</span>
+        <span class="p">],</span>
+        <span class="nx">refs</span><span class="o">:</span> <span class="p">[</span> 
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;searchBar&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#searchbar&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#history&#39;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">control</span><span class="p">({</span>
+                        <span class="s1">&#39;searchbar&#39;</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="nx">search</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">search</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+        <span class="p">},</span>
+        <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">search</span><span class="p">.</span><span class="nx">isNew</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">getHistory</span><span class="p">().</span><span class="nx">addSearch</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>And the code for the History component:</p>
+<strong>srchr/view/History.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.History&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.view.View&#39;</span><span class="p">,</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="s1">&#39;widget.history&#39;</span><span class="p">,</span>
+        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-history&#39;</span><span class="p">,</span>
+        <span class="nx">overItemCls</span><span class="o">:</span> <span class="s1">&#39;hover&#39;</span><span class="p">,</span>
+        <span class="nx">initComponent</span><span class="o">:</span>  <span class="kd">function</span><span class="p">(){</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">store</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;Srchr.store.Searches&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;searchesStore&#39;</span><span class="p">,</span>
+                        <span class="nx">model</span><span class="o">:</span> <span class="s1">&#39;Srchr.model.Search&#39;</span><span class="p">,</span>
+                        <span class="nx">autoLoad</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">});</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">tpl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">XTemplate</span><span class="p">(</span> <span class="s1">&#39;&lt;tpl for=&quot;.&quot;&gt;&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;&lt;div class=&quot;search&quot;&gt;&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&lt;div class=&quot;params&quot;&gt;&lt;span class=&quot;query&quot;&gt;{query}&lt;/span&gt;&amp;nbsp;({service})&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&lt;div class=&quot;close&quot;&gt;&lt;i class=&quot;icon-remove&quot;&gt;&lt;/i&gt;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;&lt;/tpl&gt;&#39;</span>
+                <span class="p">);</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">itemSelector</span> <span class="o">=</span> <span class="s1">&#39;div.search&#39;</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">listeners</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="nx">itemclicked</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">itemClicked</span>
+		<span class="p">},</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">callParent</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nx">itemClicked</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">view</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">el</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">getTarget</span><span class="p">(),</span>
+                    <span class="nx">className</span> <span class="o">=</span> <span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span> <span class="nx">className</span> <span class="o">&amp;&amp;</span> <span class="sr">/close/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">className</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="nx">addSearch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">searchParams</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Srchr</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="nx">searchParams</span><span class="p">));</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>And this is the end result of the previous coding steps:</p>
+<a href="/static/images/srchr_searchbar_history.png">
+	<img height="480" src="/static/images/srchr_searchbar_history.png" title="SearchBar/History interaction" width="640">
+</a>
+<h3 id="implementing_the_searchbarsearchresults_interaction">Implementing the SearchBar/SearchResults interaction</h3>
+
+<p>Next we&#8217;ll take on the SearchBar/SearchResults components interaction. Every time a &#8216;search&#8217; event is triggered by the SearchBar component the Main controller is listening, checks for which service we&#8217;re going to perform the search, tells the relevant SearchResults component to execute the search and activates the associated tab panel.</p>
+
+<p>Models, stores incremental changes:</p>
+<strong>srchr/model/TwitterSearchResult.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.model.TwitterSearchResult&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Model&#39;</span><span class="p">,</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;from_user&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;profile_image_url&#39;</span><span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/model/AnswersSearchResult.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.model.AnswersSearchResult&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Model&#39;</span><span class="p">,</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;UserNick&#39;</span><span class="p">,</span> <span class="s1">&#39;Content&#39;</span><span class="p">,</span> <span class="s1">&#39;ChosenAnswer&#39;</span><span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/store/TwitterSearchResults.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.store.TwitterSearchResults&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Store&#39;</span><span class="p">,</span>
+        <span class="nx">model</span><span class="o">:</span> <span class="s1">&#39;Srchr.model.TwitterSearchResult&#39;</span><span class="p">,</span>
+        <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;jsonp&#39;</span><span class="p">,</span>
+                <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://search.twitter.com/search.json&#39;</span><span class="p">,</span>
+                <span class="nx">reader</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+                        <span class="nx">root</span><span class="o">:</span> <span class="s1">&#39;results&#39;</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><strong>srchr/store/AnswersSearchResults.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Ext.data.reader.Answers&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.reader.Json&#39;</span><span class="p">,</span>
+        <span class="nx">read</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">callParent</span><span class="p">([{</span><span class="nx">root</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nx">response</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">results</span><span class="p">.</span><span class="nx">Question</span> <span class="o">:</span> <span class="p">[]}]);</span>      
+        <span class="p">},</span>
+        <span class="nx">root</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span>
+<span class="p">});</span>
+<span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.store.AnswersSearchResults&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.data.Store&#39;</span><span class="p">,</span>
+        <span class="nx">model</span><span class="o">:</span> <span class="s1">&#39;Srchr.model.AnswersSearchResult&#39;</span><span class="p">,</span>
+        <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;jsonp&#39;</span><span class="p">,</span>
+                <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://query.yahooapis.com/v1/public/yql&#39;</span><span class="p">,</span>
+                <span class="nx">reader</span><span class="o">:</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;Ext.data.reader.Answers&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The changes to Main controller code:</p>
+<strong>srchr/controller/Main.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.controller.Main&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.app.Controller&#39;</span><span class="p">,</span>
+        <span class="nx">requires</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Ext.util.Format&#39;</span><span class="p">],</span>
+        <span class="nx">stores</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Searches&#39;</span><span class="p">,</span> <span class="s1">&#39;TwitterSearchResults&#39;</span><span class="p">,</span> <span class="s1">&#39;AnswersSearchResults&#39;</span><span class="p">],</span>
+        <span class="nx">models</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Search&#39;</span><span class="p">,</span> <span class="s1">&#39;TwitterSearchResult&#39;</span><span class="p">,</span> <span class="s1">&#39;AnswersSearchResult&#39;</span><span class="p">],</span>
+        <span class="nx">views</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s1">&#39;SearchBar&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;History&#39;</span>
+        <span class="p">],</span>
+        <span class="nx">refs</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;searchBar&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#searchbar&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#history&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;tabs&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#tabs&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;twitterSearchResults&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#twittersearchresults&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nx">ref</span><span class="o">:</span> <span class="s1">&#39;answersSearchResults&#39;</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;#answerssearchresults&#39;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">control</span><span class="p">({</span>
+                        <span class="s1">&#39;searchbar&#39;</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="nx">search</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">search</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+        <span class="p">},</span>
+        <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">tabs</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTabs</span><span class="p">(),</span>
+                    <span class="nx">tabName</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">service</span> <span class="o">+</span> <span class="s1">&#39;SearchResults&#39;</span><span class="p">,</span>
+                    <span class="nx">tab</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="s1">&#39;get&#39;</span> <span class="o">+</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">Format</span><span class="p">.</span><span class="nx">capitalize</span><span class="p">(</span><span class="nx">tabName</span><span class="p">)]();</span>
+                <span class="nx">tab</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                <span class="nx">tabs</span><span class="p">.</span><span class="nx">setActiveTab</span><span class="p">(</span><span class="nx">tab</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">search</span><span class="p">.</span><span class="nx">isNew</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">getHistory</span><span class="p">().</span><span class="nx">addSearch</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Changes to the Viewport component:</p>
+<strong>srchr/view/Viewport.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.Viewport&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.Viewport&#39;</span><span class="p">,</span>
+        <span class="nx">requires</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s1">&#39;Srchr.view.SearchBar&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Srchr.view.History&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Srchr.view.SearchResults&#39;</span>
+        <span class="p">],</span>
+        <span class="nx">initComponent</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">layout</span> <span class="o">=</span> <span class="p">{</span>
+                       <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;fit&#39;</span>
+                <span class="p">};</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span>
+                        <span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;panel&#39;</span><span class="p">,</span>
+                        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr&#39;</span><span class="p">,</span>
+                        <span class="nx">layout</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;fit&#39;</span>
+                        <span class="p">},</span>
+                        <span class="nx">dockedItems</span><span class="o">:</span> <span class="p">[</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">createSearchBar</span><span class="p">(),</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">createHistory</span><span class="p">()</span>
+                        <span class="p">],</span>
+                        <span class="nx">items</span><span class="o">:</span> <span class="p">[{</span>
+                                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;tabs&#39;</span><span class="p">,</span>
+                                <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-tabs&#39;</span><span class="p">,</span>
+                                <span class="nx">xtype</span><span class="o">:</span> <span class="s1">&#39;tabpanel&#39;</span><span class="p">,</span>
+                                <span class="nx">layout</span><span class="o">:</span> <span class="p">{</span>
+                                        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;fit&#39;</span>
+                                <span class="p">},</span>
+                                <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                                        <span class="k">this</span><span class="p">.</span><span class="nx">createTwitterSearchResults</span><span class="p">(),</span>
+                                        <span class="k">this</span><span class="p">.</span><span class="nx">createAnswersSearchResults</span><span class="p">()</span>
+                                <span class="p">]</span>
+                        <span class="p">}]</span>
+                <span class="p">}];</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">callParent</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="nx">createSearchBar</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">searchBar</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.searchbar&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;searchbar&#39;</span><span class="p">,</span>
+                        <span class="nx">dock</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                        <span class="nx">height</span><span class="o">:</span> <span class="mi">60</span>
+                <span class="p">});</span>
+                <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">searchBar</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="nx">createHistory</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">history</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.history&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span>
+                        <span class="nx">dock</span><span class="o">:</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span>
+                        <span class="nx">width</span><span class="o">:</span> <span class="mi">320</span>
+                <span class="p">});</span>
+                <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">history</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="nx">createTwitterSearchResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">twitterSearchResults</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.searchresults&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;twittersearchresults&#39;</span><span class="p">,</span>
+                        <span class="nx">store</span><span class="o">:</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;Srchr.store.TwitterSearchResults&#39;</span><span class="p">,</span> <span class="p">{}),</span>
+                        <span class="nx">tpl</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">XTemplate</span><span class="p">(</span>
+                                <span class="s1">&#39;&lt;tpl for=&quot;.&quot;&gt;&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&lt;div class=&quot;search-result&quot;&gt;&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;&lt;div class=&quot;avatar&quot;&gt;&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;&lt;img src=&quot;{ profile_image_url }&quot;&gt;&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;&lt;div class=&quot;info&quot;&gt;&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;&lt;div class=&quot;from_user&quot;&gt;{ from_user }&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;&lt;div class=&quot;text&quot;&gt;{ text }&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;&lt;/tpl&gt;&#39;</span>
+                        <span class="p">),</span>
+                        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Twitter Search Results&#39;</span><span class="p">,</span>
+                        <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">getProxy</span><span class="p">().</span><span class="nx">extraParams</span><span class="p">.</span><span class="nx">q</span> <span class="o">=</span> <span class="nx">search</span><span class="p">.</span><span class="nx">query</span><span class="p">;</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+                <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">twitterSearchResults</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="nx">createAnswersSearchResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">answersSearchResults</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;widget.searchresults&#39;</span><span class="p">,</span> <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;answerssearchresults&#39;</span><span class="p">,</span>
+                        <span class="nx">store</span><span class="o">:</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;Srchr.store.AnswersSearchResults&#39;</span><span class="p">,</span> <span class="p">{}),</span>
+                        <span class="nx">tpl</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">XTemplate</span><span class="p">(</span>
+                                <span class="s1">&#39;&lt;tpl for=&quot;.&quot;&gt;&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&lt;div class=&quot;search-result answer&quot;&gt;&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;&lt;div class=&quot;info&quot;&gt;&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;&lt;div class=&quot;text&quot;&gt;&lt;span class=&quot;question&quot;&gt;Question:&lt;/span&gt;{ Content }&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;&lt;div class=&quot;text&quot;&gt;&lt;span class=&quot;answer&quot;&gt;Answer:&lt;/span&gt;{ ChosenAnswer }&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;&lt;/tpl&gt;&#39;</span>
+                        <span class="p">),</span>
+                        <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Answers Search Results&#39;</span><span class="p">,</span>
+                        <span class="nx">search</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">search</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="kd">var</span> <span class="nx">yql</span> <span class="o">=</span> <span class="s1">&#39;select * from answers.search where query=&quot;&#39;</span> <span class="o">+</span> <span class="nx">search</span><span class="p">.</span><span class="nx">query</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+                                <span class="nx">yql</span> <span class="o">=</span> <span class="nx">yql</span> <span class="o">+</span> <span class="s1">&#39; and type=&quot;resolved&quot;&#39;</span><span class="p">;</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">getProxy</span><span class="p">().</span><span class="nx">extraParams</span><span class="p">.</span><span class="nx">q</span> <span class="o">=</span> <span class="nx">yql</span><span class="p">;</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">getProxy</span><span class="p">().</span><span class="nx">extraParams</span><span class="p">.</span><span class="nx">format</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span><span class="p">;</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+                        <span class="p">}</span>
+                <span class="p">});</span>
+                <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">answersSearchResults</span><span class="p">;</span>
+        <span class="p">}</span>
+</code></pre></div>
+<p>And finally, changes to SearchResults:</p>
+<strong>srchr/view/SearchResults.js</strong><div class="highlight"><pre><code class="javascript"><span class="nx">Ext</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;Srchr.view.SearchResults&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">extend</span><span class="o">:</span> <span class="s1">&#39;Ext.view.View&#39;</span><span class="p">,</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="s1">&#39;widget.searchresults&#39;</span><span class="p">,</span>
+        <span class="nx">cls</span><span class="o">:</span> <span class="s1">&#39;srchr-searchresults&#39;</span><span class="p">,</span>
+        <span class="nx">tpl</span><span class="o">:</span> <span class="s1">&#39;&lt;h1&gt;Search Results&lt;/h1&gt;&#39;</span><span class="p">,</span>
+        <span class="nx">itemSelector</span><span class="o">:</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span>
+        <span class="nx">autoScroll</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The end result:</p>
+<a href="/static/images/srchr_searchbar_searchresults.png">
+	<img height="480" src="/static/images/srchr_searchbar_searchresults.png" title="SearchBar/SearchResults interaction" width="640">
+</a>
+<h3 id="historysearchresults_ineraction">History/SearchResults ineraction</h3>
+
+<p>Finally, whenever the user clicks an History entry, a search event is thrown to be caught by the Main controller that then tells SearchResults view to update itself.</p>
+
+<p>The changes to the History view component:</p>
+<strong>srchr/view/History.js</strong><div class="highlight"><pre><code class="javascript"><span class="p">...</span>
+<span class="nx">itemClicked</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">view</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">el</span><span class="p">,</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">getTarget</span><span class="p">(),</span>
+	    <span class="nx">className</span> <span class="o">=</span> <span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
+
+	<span class="k">if</span><span class="p">(</span> <span class="nx">className</span> <span class="o">&amp;&amp;</span> <span class="sr">/close/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">className</span><span class="p">))</span> <span class="p">{</span>
+
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="nx">search</span><span class="p">);</span>
+
+	<span class="p">}</span> 
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">fireEvent</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="nx">search</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">},</span>
+<span class="p">...</span>
+</code></pre></div>
+<p>And the changes made to the Main controller:</p>
+<strong>srchr/view/Main.js</strong><div class="highlight"><pre><code class="javascript"><span class="p">...</span>
+<span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="k">this</span><span class="p">.</span><span class="nx">control</span><span class="p">({</span>
+		<span class="s1">&#39;searchbar&#39;</span><span class="o">:</span> <span class="p">{</span>
+			<span class="nx">search</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">search</span>
+		<span class="p">},</span>
+		<span class="s1">&#39;history&#39;</span><span class="o">:</span> <span class="p">{</span>
+			<span class="nx">search</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">search</span>
+		<span class="p">}</span>
+	<span class="p">});</span>     
+<span class="p">},</span>
+<span class="p">...</span>
+</code></pre></div>
+<h3 id="final_thoughts">Final thoughts</h3>
+
+<p>In the <a href="/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/">next article</a> we&#8217;ll implement the srchr application using the javascriptmvc framework. If you liked this article please subscribe to the blog&#8217;s feeds to receive other articles on building large client-side javascript applications and javascript development in general. Thank you for reading this article.</p>
+		</div><!-- .post-content -->
+		<footer class="post-footer"></footer><!-- .post-footer -->
+	</article><!-- .post -->
+
+	<!--nav class="pagenation">
+		<ul>
+			
+			
+				<li class="next right"><a rel="next" href="/blog/2012/12/28/how-to-build-a-large-single-page-javascript-application-using-javascriptmvc/" title="View How to build a large, single-page javascript application with JavascriptMVC">Next &raquo;</a></li>
+			
+		</ul>
+	</nav-->
+
+	<!--div id="related" class="clear">
+	  <h2>Related Posts</h2>
+	  <ul class="posts">
+	    
+	      <li><span>10 Oct 2013</span> &raquo; <a href="/blog/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">How to build a multi-select widget using CanJs</a></li>
+	    
+	      <li><span>21 Apr 2013</span> &raquo; <a href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
+	    
+	      <li><span>20 Jan 2013</span> &raquo; <a href="/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">How to build a large, single-page javascript application with AngularJs</a></li>
+	    
+	  </ul>
+	</div-->
+
+
+</div>
+
+				<!--
+<div id="secondery">
+
+	<div class="social-links">
+
+
+              <ul>
+              	<li><a href="http://facebook.com/alexandre.o.gomes" target="_blank"><span>Facebook</span>linke us</a></li>
+              	<li><a href="http://twitter.com/arijo" target="_blank"><span>Twitter</span>Follow us</a></li>
+              	<li><a href="https://plus.google.com/u/0/104096418598741949588/posts" target="_blank"><span>Google</span>Add to circle</a></li>
+		
+              </ul>
+
+
+
+	</div>
+
+
+
+</div>
+
+-->
+
+
+ 				</div>
+			</div>
+
+
+			
+			<footer id="footer">
+				<div class="inner">
+
+
+				</div>
+			</footer>
+		</div>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
+
+	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		SyntaxHighlighter.all();
+	</script>
+
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37294507-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		 })();
+
+	</script>
+
+	<!--script type="text/javascript">
+	var clicky_site_ids = clicky_site_ids || [];
+	clicky_site_ids.push(xxxxxxx);
+	(function() {
+	  var s = document.createElement('script');
+	  s.type = 'text/javascript';
+	  s.async = true;
+	  s.src = '//static.getclicky.com/js';
+	  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+	})();
+	</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/xxxxxxxxns.gif" /></p></noscript-->
+
+	</body>
+</html>
+
+
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#designing_the_extjs_application"><span class="toc-number">1.</span> <span class="toc-text">Designing the ExtJs application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolding_the_extjs_components"><span class="toc-number">2.</span> <span class="toc-text">Scaffolding the ExtJs components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implementing_the_searchbarhistory_interaction"><span class="toc-number">3.</span> <span class="toc-text">Implementing the SearchBar/History interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#implementing_the_searchbarsearchresults_interaction"><span class="toc-number">4.</span> <span class="toc-text">Implementing the SearchBar/SearchResults interaction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#historysearchresults_ineraction"><span class="toc-number">5.</span> <span class="toc-text">History/SearchResults ineraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final_thoughts"><span class="toc-number">6.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&text=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&is_video=false&description=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a large, single-page javascript application with ExtJS&body=Check out this article: http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&title=How to build a large, single-page javascript application with ExtJS"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2012/10/20/how-to-build-a-large-single-page-javascript-application-using-extjs/&name=How to build a large, single-page javascript application with ExtJS&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Alexandre Gomes
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

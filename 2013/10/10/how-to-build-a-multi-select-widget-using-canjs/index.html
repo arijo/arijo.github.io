@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="How to build a multi-select widget using CanJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			In this post we&amp;#8217;re g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to build a multi-select widget using CanJs">
+<meta property="og:url" content="http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/index.html">
+<meta property="og:site_name" content="Alexandre Gomes">
+<meta property="og:description" content="How to build a multi-select widget using CanJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			In this post we&amp;#8217;re g">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://firmamento.org/static/images/multi_select_folder_organization.png">
+<meta property="og:image" content="http://firmamento.org/static/images/multi_select_scaffold.png">
+<meta property="og:image" content="http://firmamento.org/static/images/multi_select_final_view.png">
+<meta property="og:updated_time" content="2018-10-07T12:45:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to build a multi-select widget using CanJs">
+<meta name="twitter:description" content="How to build a multi-select widget using CanJs 		  		 		  		 		 		 		 		  		   		  		 		 		 		  		 		 	 		 		  		  		  		 		 	 	 	  		  			 				            	  		 			In this post we&amp;#8217;re g">
+<meta name="twitter:image" content="http://firmamento.org/static/images/multi_select_folder_organization.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to build a multi-select widget using CanJs</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&text=How to build a multi-select widget using CanJs"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&is_video=false&description=How to build a multi-select widget using CanJs"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a multi-select widget using CanJs&body=Check out this article: http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&name=How to build a multi-select widget using CanJs&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#the_user_can_open_and_close_the_multiselect_widget"><span class="toc-number">1.</span> <span class="toc-text">The user can open and close the multi-select widget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#the_user_can_select_multiple_options"><span class="toc-number">2.</span> <span class="toc-text">The user can select multiple options</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#final_thoughts"><span class="toc-number">3.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to build a multi-select widget using CanJs
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Alexandre Gomes</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2013-10-10T00:00:00.000Z" itemprop="datePublished">2013-10-10</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <!doctype html>
+<html itemscope="" itemtype="http://schema.org/Organization" lang="en">
+		<meta charset="utf-8">
+
+
+		<title>How to build a multi-select widget using CanJs</title>
+		<meta name="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta itemprop="name" content="Javascript Development, Consulting, and Training - How to build a multi-select widget using CanJs - Alex Gomes">
+		<meta itemprop="description" content="Large, single-page javascript application development, training and support.">
+
+		<meta property="og:title" content="Javascript Development, Consulting, and Training - How to build a multi-select widget using CanJs - Alex Gomes">
+		<meta property="og:type" content="company">
+		<meta property="og:url" content="http://firmamento.org/blog/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/">
+		<meta property="og:image" content="http://firmamento.org/img.png">
+		<meta property="og:site_name" content="Alex Gomes">
+
+		<meta name="keywords" content="widget,widgets,multiselect,multi-select,javascript,javascript patterns,javascript application patterns,javascript architecture,javascript application architecture,freelance javascript developer">
+
+
+		<meta name="robots" content="noodp">
+
+		<meta property="fb:app_id" content="462212497146008">
+		<meta property="fb:admins" content="505965699">
+		<link rel="canonical" href="http://firmamento.org/">
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" media="all" href="/static/css/style.css">
+		<link rel="stylesheet" media="all" href="/static/css/pygment.css">
+	
+		<link rel="stylesheet" href="/static/css/shCore.css" type="text/css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="/static/css/shThemeDefault.css" type="text/css" media="screen" charset="utf-8">
+
+		<link rel="stylesheet" href="/static/css/overrides.css" type="text/css" media="screen" charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="http://feeds.feedburner.com/arijo" rel="alternate" title="firmamento.org | Javascript Development, Consulting, and Training" type="application/atom+xml">
+		<link rel="search" type="application/opensearchdescription+xml" title="Website" href="opensearch.xml">
+	
+	
+	<body class="url_blog_2013_10_10_how_to_build_a_multi_select_widget_using_canjs_ categories_javascript categories_mvc categories_widgets categories_how to build a javascript widget tags_widget tags_widgets tags_multiselect tags_multi_select tags_javascript tags_javascript patterns tags_javascript application patterns tags_javascript architecture tags_javascript application architecture tags_freelance javascript developer layout_post">
+
+		<div id="wrapper">
+
+			<div id="main">
+				<div class="inner">
+
+
+
+
+ 
+<div id="primary" role="main">  
+
+
+	<article class="post">
+
+		<div class="post-content">
+			<p>In this post we&#8217;re going to design and implement a multi-select widget using <a href="http://www.canjs.com" target="_blank" rel="noopener">CanJs</a>. We&#8217;re also going to use <a href="http://javascriptmvc.com/docs/stealjs.html" target="_blank" rel="noopener">StealJs</a> as the dependency management tool.</p>
+
+<p>We begin by downloading the latest version of the <a href="http://javascriptmvc.com/dist/javascriptmvc-3.3.zip" target="_blank" rel="noopener">JavascriptMVC</a> framework and then creating a &#8216;multi&#8217; folder with the following 5 files:</p>
+
+<ul>
+<li>multi/multi.html</li>
+
+<li>multi/multi.js</li>
+
+<li>multi/views/multi.ejs</li>
+
+<li>multi/views/dropdown.ejs</li>
+
+<li>multi/multi.less</li>
+</ul>
+
+<p>A snapshot of the folder organization:</p>
+<a href="/static/images/multi_select_folder_organization.png">
+	<img src="/static/images/multi_select_folder_organization.png" style="border: 1px solid #3ba3d0;" title="Multi-select folder organization">
+</a>
+<p>Then we break down the multi-select widget into two complementary behaviours:</p>
+
+<ul>
+<li>The user can open and close the multi-select widget</li>
+
+<li>The user can select multiple options</li>
+</ul>
+
+<h5 id="the_user_can_open_and_close_the_multiselect_widget">The user can open and close the multi-select widget</h5>
+
+<p>To implement this behaviour we will create an observable named &#8216;clientState&#8217; that will contain an &#8216;open&#8217; attribute that will be set to true/false wether the user clicks the input box, the dropdown or anywhere else on the browser&#8217;s window.</p>
+
+<p>The code follows bellow:</p>
+<strong>multi/multi.html</strong><pre class="brush: html;">
+&lt;!DOCTYPE HTML>
+&lt;html>
+    &lt;head>
+        &lt;meta http-equiv="content-type" content="text/html; charset=utf-8">
+        &lt;title>Multi&lt;/title>
+    &lt;/head>
+    &lt;body>
+        &lt;div class="multi">MULTI PLACEHOLDER&lt;/div>    
+        &lt;script src="../steal/steal.js?multi/multi.js" type="text/javascript" charset="utf-8">&lt;/script>
+    &lt;/body>
+&lt;/html>
+</pre><strong>multi/multi.js</strong><pre class="brush: js;">
+steal('can', './views/multi.ejs', './views/dropdown.ejs', './multi.less',
+        'can/construct/super',  function(can, MultiEJS, DropdownEJS) {
+
+            var Multi = can.Control({
+
+                setup: function(el, options) {
+
+                    options.clientState = new can.Model({
+                        open: false
+                    });
+
+                    this._super(el, options);
+                },
+
+                init: function(el, options) {
+
+                    this.element.html(MultiEJS({}));
+
+                    this.element.find('.dropdown').html( DropdownEJS({}));
+
+                    this.element.find('.dropdown').hide();
+                },
+
+                '.box click': function(el, ev) {
+
+                    this.options.clientState.attr('open', true);
+                },
+
+                '{window} click': function(el, ev) {
+
+                    if(!this.element.has(ev.target).length)
+                        this.options.clientState.attr('open', false);
+                },
+
+                '{clientState} open': function(clientState, ev, newValue, oldValue) {
+
+                    if(newValue)
+                        this.element.find('.dropdown').show();
+                    else
+                        this.element.find('.dropdown').hide();
+                }
+    });
+
+    new Multi('.multi', {});
+});
+</pre><strong>multi/views/multi.ejs</strong><pre class="brush: html;">
+    &lt;input class="box">
+    &lt;ul class="dropdown">&lt;/ul>
+</pre><strong>multi/views/dropdown.ejs</strong><pre class="brush: html;">
+    &lt;li class="item">Alex&lt;/li>
+    &lt;li class="item">Serge&lt;/li>
+    &lt;li class="item">John&lt;/li>
+    &lt;li class="item">Mike&lt;/li>
+    &lt;li class="item">Mary&lt;/li>
+</pre><strong>multi/multi.less</strong><div class="highlight"><pre><code class="sass"><span class="nc">.select</span> <span class="err">{</span>
+        <span class="na">width</span><span class="o">:</span> <span class="mi">220</span><span class="kt">px</span><span class="err">;</span>
+       <span class="nc">.box</span> <span class="err">{</span>
+            <span class="na">width</span><span class="o">:</span> <span class="mi">208</span><span class="kt">px</span><span class="err">;</span>
+            <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+            <span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="err">;</span>
+            <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+       <span class="err">}</span>
+       <span class="nt">ul</span><span class="nc">.dropdown</span> <span class="err">{</span>
+            <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+            <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+            <span class="na">list-style</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+            <span class="na">border-left</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="err">;</span>
+            <span class="na">border-right</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="err">;</span>
+            <span class="nt">li</span><span class="nc">.item</span> <span class="err">{</span>
+                <span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="err">;</span>
+                <span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="err">;</span>
+                <span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="err">;</span>
+                <span class="nc">.check</span> <span class="err">{</span> 
+                    <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="err">;</span>
+                <span class="err">}</span>
+            <span class="err">}</span>
+       <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>And this is how the multi-select widget looks like so far:</p>
+<a href="/static/images/multi_select_scaffold.png">
+	<img src="/static/images/multi_select_scaffold.png" style="border: 1px solid #3ba3d0;" title="Multi-select scaffold">
+</a>
+<h5 id="the_user_can_select_multiple_options">The user can select multiple options</h5>
+
+<p>We&#8217;ll keep track of the selected options in a &#8216;clientState&#8217; attribute named &#8216;selectedOptions&#8217;. We&#8217;ll also add/remove a &#8216;selected&#8217; class to the dom element representing an option in order to show the user that item has been selected.</p>
+<strong>multi/multi.js</strong><pre class="brush: js; highlight: [1,2,10,20,21,22,23,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52];">
+steal('can', './views/multi.ejs', './views/dropdown.ejs', './multi.less',
+        'can/construct/super',  function(can, MultiEJS, DropdownEJS) {
+
+        var Multi = can.Control({
+
+            setup: function(el, options) {
+
+                options.clientState = new can.Model({
+                    open: false,
+                    selectedOptions: []
+                });
+
+                this._super(el, options);
+            },
+
+            init: function(el, options) {
+
+                this.element.html(MultiEJS({}));
+
+                this.element.find('.dropdown').html(
+                    DropdownEJS({
+                        initialOptions: options.data || []
+                }));
+
+                this.element.find('.dropdown').hide();
+            },
+
+            ...
+
+            '.dropdown .item click': function(el, ev) {
+
+                var item = el.data('item'),
+                so = this.options.clientState.selectedOptions,
+                index = -1;
+
+                if(el.hasClass('selected')) {
+
+                    index = so.indexOf(item);
+
+                    so.splice(index, 1);
+
+                    el.removeClass('selected');
+
+                } else {
+
+                    so.push(item);
+
+                    el.addClass('selected');
+                }
+
+                this.element.trigger('change', [so]);
+            }
+});
+</pre><strong>multi/views/dropdown.ejs</strong><pre class="brush: html;">
+&lt;% list(initialOptions, function(io) { %>
+    &lt;li class="item" &lt;%= (el) -> el.data('item', io) %>>&lt;div class="check">&nbsp;&lt;/div>&lt;%= io.text %>&lt;/li>
+&lt;% }); %>
+</pre><strong>multi/multi.less</strong><div class="highlight"><pre><code class="sass"><span class="nc">.multi</span> <span class="err">{</span>
+    <span class="na">width</span><span class="o">:</span> <span class="mi">220</span><span class="kt">px</span><span class="err">;</span>
+   <span class="nc">.box</span> <span class="err">{</span>
+        <span class="na">width</span><span class="o">:</span> <span class="mi">208</span><span class="kt">px</span><span class="err">;</span>
+        <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+        <span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="err">;</span>
+        <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#333</span><span class="err">;</span>
+       <span class="err">}</span>
+       <span class="nt">ul</span><span class="nc">.dropdown</span> <span class="err">{</span>
+            <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+            <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="err">;</span>
+            <span class="na">list-style</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+            <span class="na">border-left</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="err">;</span>
+            <span class="na">border-right</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="err">;</span>
+            <span class="nt">li</span><span class="nc">.item</span> <span class="err">{</span>
+                <span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="err">;</span>
+                <span class="na">border-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="err">;</span>
+                <span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="err">;</span>
+                <span class="nc">.check</span> <span class="err">{</span>
+                    <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="err">;</span>
+                <span class="err">}</span>
+                <span class="k">&amp;</span><span class="nc">.selected</span> <span class="err">{</span>
+                    <span class="nc">.check</span> <span class="err">{</span>
+                        <span class="na">width</span><span class="o">:</span> <span class="mi">35</span><span class="kt">px</span><span class="err">;</span>
+                        <span class="na">margin-left</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="err">;</span>
+                        <span class="na">background</span><span class="o">:</span> <span class="sx">url(../images/checked.gif)</span> <span class="no">no-repeat</span><span class="err">;</span>
+                    <span class="err">}</span>
+                <span class="err">}</span>
+             <span class="err">}</span>
+       <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>And here&#8217;s how the multi-select looks like after these changes:</p>
+<a href="/static/images/multi_select_final_view.png">
+	<img src="/static/images/multi_select_final_view.png" style="border: 1px solid #3ba3d0;" title="Multi-select final view">
+</a>
+<h5 id="final_thoughts">Final thoughts</h5>
+
+<p>In this article I tried to describe the process of building a multi-select widget using <a href="http://www.canjs.com" target="_blank" rel="noopener">CanJs</a> as the MVC framework and <a href="http://javascriptmvc.com/docs/stealjs.html" target="_blank" rel="noopener">StealJs</a> as the dependency management tool.</p>
+
+<p>One of the reasons I decided to write a blog post about building such a common used widget was the fact that is difficult to find quality blog posts on the web that describe widget building step by step.</p>
+
+<p>I hope this article was somehow helpful to developers trying to build similar widgets.</p>
+
+<p>Thank you for reading this post.</p>
+		</div><!-- .post-content -->
+		<footer class="post-footer"></footer><!-- .post-footer -->
+	</article><!-- .post -->
+
+	<!--nav class="pagenation">
+		<ul>
+			
+				<li class="before left"><a rel="prev" href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/" title="View How to build a large, single-page javascript application with KnockoutJS">&laquo; Previous</a></li>
+			
+			
+		</ul>
+	</nav-->
+
+	<!--div id="related" class="clear">
+	  <h2>Related Posts</h2>
+	  <ul class="posts">
+	    
+	      <li><span>21 Apr 2013</span> &raquo; <a href="/blog/2013/04/21/how-to-build-a-large-single-page-javascript-application-using-knockoutjs/">How to build a large, single-page javascript application with KnockoutJS</a></li>
+	    
+	      <li><span>20 Jan 2013</span> &raquo; <a href="/blog/2013/01/20/how-to-build-a-large-single-page-javascript-application-using-angularjs/">How to build a large, single-page javascript application with AngularJs</a></li>
+	    
+	      <li><span>05 Jan 2013</span> &raquo; <a href="/blog/2013/01/05/how-to-build-a-large-single-page-javascript-application-using-backbonejs/">How to build a large, single-page javascript application with Backbone.js</a></li>
+	    
+	  </ul>
+	</div-->
+
+
+</div>
+
+				<!--
+<div id="secondery">
+
+	<div class="social-links">
+
+
+              <ul>
+              	<li><a href="http://facebook.com/alexandre.o.gomes" target="_blank"><span>Facebook</span>linke us</a></li>
+              	<li><a href="http://twitter.com/arijo" target="_blank"><span>Twitter</span>Follow us</a></li>
+              	<li><a href="https://plus.google.com/u/0/104096418598741949588/posts" target="_blank"><span>Google</span>Add to circle</a></li>
+		
+              </ul>
+
+
+
+	</div>
+
+
+
+</div>
+
+-->
+
+
+ 				</div>
+			</div>
+
+
+			
+			<footer id="footer">
+				<div class="inner">
+
+
+				</div>
+			</footer>
+		</div>
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
+
+	<script src="/static/js/shCore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushXml.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushBash.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushDiff.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/js/shBrushSass.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		SyntaxHighlighter.all();
+	</script>
+
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37294507-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		 })();
+
+	</script>
+
+	<!--script type="text/javascript">
+	var clicky_site_ids = clicky_site_ids || [];
+	clicky_site_ids.push(xxxxxxx);
+	(function() {
+	  var s = document.createElement('script');
+	  s.type = 'text/javascript';
+	  s.async = true;
+	  s.src = '//static.getclicky.com/js';
+	  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+	})();
+	</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/xxxxxxxxns.gif" /></p></noscript-->
+
+	</body>
+</html>
+
+
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#the_user_can_open_and_close_the_multiselect_widget"><span class="toc-number">1.</span> <span class="toc-text">The user can open and close the multi-select widget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#the_user_can_select_multiple_options"><span class="toc-number">2.</span> <span class="toc-text">The user can select multiple options</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#final_thoughts"><span class="toc-number">3.</span> <span class="toc-text">Final thoughts</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&text=How to build a multi-select widget using CanJs"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&is_video=false&description=How to build a multi-select widget using CanJs"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to build a multi-select widget using CanJs&body=Check out this article: http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&title=How to build a multi-select widget using CanJs"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://firmamento.org/2013/10/10/how-to-build-a-multi-select-widget-using-canjs/&name=How to build a multi-select widget using CanJs&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Alexandre Gomes
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/arijo">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
